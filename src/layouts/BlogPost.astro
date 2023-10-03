@@ -33,7 +33,7 @@ const { postId, title, description, year, heroImage, authors } = Astro.props;
             src={heroImage}
             alt={title}
           />
-          <div class="detail__header">
+          <div class="detail__header" transition:name="detail-header">
             <h1 class="detail__title">{title}</h1>
             <p class="detail__desc">
               {authors}

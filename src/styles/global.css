@@ -81,8 +81,8 @@
 	--global-borderRadius: .5rem;
 	--global-borderRadius-l: 1rem;
 
-	--global-fontFamily: "Graphik Web", sans-serif;
-	/* --global-fontFamily: "Axalp Grotesk", sans-serif; */
+	/* --global-fontFamily: "Graphik Web", sans-serif; */
+	--global-fontFamily: "Axalp Grotesk", sans-serif;
 
 	--global-text-color: var(--global-color-neutral-1000);
 	--global-meta-color: var(--global-color-neutral-500);
@@ -91,17 +91,24 @@
 	--global-easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
 	--global-easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
 
+	/* --global-easeOut: var(--global-easeOutQuint);
+	--global-easeIn: var(--global-easeInQuint);
+	--global-easeInOut: var(--global-easeInOutQuint); */
+	--global-easeOut: ease-in;
+	--global-easeIn: ease-out;
+	--global-easeInOut: ease-in-out;
+
 	--global-animation-duration: 300ms;
 	--global-animation-duration-slow: 600ms;
 	--global-animation-duration-fast: 150ms;
 }
 
 ::view-transition-new(root) {
-	animation: var(--global-animation-duration) var(--global-easeOutQuint) fade;
+	animation: var(--global-animation-duration) var(--global-easeOut) fade;
 }
 
 ::view-transition-old(root) {
-	animation: var(--global-animation-duration) var(--global-easeInQuint) fade reverse;
+	animation: var(--global-animation-duration) var(--global-easeIn) fade reverse;
 }
 
 html {
@@ -243,15 +250,15 @@ dt {
 .detail__header {
 	grid-row: 2;
 	padding: 0 1.5rem 1.5rem;
-	view-transition-name: detail-header;
+	/* view-transition-name: detail-header; */
 }
 
 ::view-transition-new(detail-header) {
-	animation: var(--global-animation-duration) var(--global-easeOutQuint) slide-from-bottom;
+	animation: var(--global-animation-duration) var(--global-easeOut) slide-from-bottom;
 }
 
 ::view-transition-old(detail-header) {
-	animation: var(--global-animation-duration) var(--global-easeInQuint) slide-from-bottom reverse;
+	animation: var(--global-animation-duration) var(--global-easeIn) slide-from-bottom reverse;
 }
 
 .detail__desc {
@@ -278,16 +285,16 @@ dt {
 	width: auto;
 	margin: auto;
 	mix-blend-mode: darken;
-	view-transition-name: detail-image;
 }
 
+/*
 ::view-transition-new(detail-image) {
 	animation: var(--global-animation-duration) var(--global-easeOutQuint) grow;
 }
 
 ::view-transition-old(detail-image) {
 	animation: var(--global-animation-duration) var(--global-easeInQuint) grow reverse;
-}
+} */
 
 @media (min-width: 75em) {
 

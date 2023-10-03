@@ -54,9 +54,9 @@ const currentPath = pathname.slice(1); // remove the first "/"
                 class="item__img"
                 width="600"
                 height="600"
-                transition:name={`image-${post.data.postId}`}
                 src={post.data.heroImage}
                 alt={post.data.title}
+                transition:name={`image-${post.data.postId}`}
               />
               <h2 class="item__title">{post.data.title}</h2>
               <p class="item__year">{post.data.year}</p>

@@ -2,8 +2,7 @@
 const { tags, currentPath, amount } = Astro.props;
 ---
 
-<header class="header" transition:name="nav">
-  <h1 class="font-size-base">Objects</h1>
+<header class="header" transition:name="header">
   <nav class="tags">
     <ul class="tags__list list-reset">
       <li class="tags__item">
@@ -50,11 +49,14 @@ const { tags, currentPath, amount } = Astro.props;
     align-items: center;
     justify-content: space-between; */
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    /* grid-template-columns: 1fr auto 1fr; */
+    grid-template-columns: auto 1fr;
     align-items: center;
-    padding: 0.25rem 1.75rem;
+    /* padding: 0.25rem 1.75rem; */
+    padding: 0.25rem 1.75rem 0.25rem 1rem;
     margin-bottom: -0.25rem;
     z-index: 200;
+    /* contain: paint; */
   }
 
   .header__amount {
@@ -78,13 +80,13 @@ const { tags, currentPath, amount } = Astro.props;
     color: var(--global-text-color);
   }
 
-  ::view-transition-new(nav):only-child {
-    animation: var(--global-animation-duration) var(--global-easeOutQuint)
+  ::view-transition-new(header):only-child {
+    animation: var(--global-animation-duration) var(--global-easeOut)
       slide-from-top;
   }
 
-  ::view-transition-old(nav):only-child {
-    animation: var(--global-animation-duration) var(--global-easeInQuint)
+  ::view-transition-old(header):only-child {
+    animation: var(--global-animation-duration) var(--global-easeIn)
       slide-from-top reverse;
   }
 </style>

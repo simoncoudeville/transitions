@@ -1,5 +1,5 @@
 <a href="/" class="back" transition:name="back">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
     <rect width="256" height="256" fill="none"></rect>
     <polyline
       points="160 208 80 128 160 48"
@@ -8,23 +8,26 @@
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="12"></polyline>
-  </svg>
+  </svg> -->
+
+   ← back
 </a>
 
 <style is:global>
   .back {
     position: fixed;
-    top: 1.5rem;
-    left: 1.5rem;
+    /* top: 1.5rem;
+    left: 1.5rem; */
+    top: 1.25rem;
+    left: 1.75rem;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem;
-    background-color: var(--global-color-neutral-100);
+    /* padding: 0.75rem; */
+    /* background-color: var(--global-color-neutral-100); */
     color: var(--global-text-color);
     border-radius: 100%;
-    view-transition-name: back;
 
     & svg {
       fill: currentColor;
@@ -35,12 +38,12 @@
   }
 
   ::view-transition-new(back) {
-    animation: var(--global-animation-duration) var(--global-easeOutQuint)
+    animation: var(--global-animation-duration) var(--global-easeOut)
       slide-from-left;
   }
 
   ::view-transition-old(back) {
-    animation: var(--global-animation-duration) var(--global-easeInQuint)
+    animation: var(--global-animation-duration) var(--global-easeIn)
       slide-from-left reverse;
   }
 </style>
