@@ -1,0 +1,82 @@
+---
+const { tags, currentPath, amount } = Astro.props;
+---
+
+<header class="header" transition:name="nav">
+  <nav class="tags">
+    <ul class="tags__list list-reset">
+      <li class="tags__item">
+        <a
+          class={currentPath === ""
+            ? "tags__link tags__link--active"
+            : "tags__link"}
+          href="/"
+        >
+          All</a
+        >
+      </li>
+      {
+        tags.map((tag) => (
+          <li>
+            <a
+              class={
+                currentPath === tag
+                  ? "tags__link tags__link--active"
+                  : "tags__link"
+              }
+              href={`/${tag}`}
+            >
+              {tag}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <p class="color-meta">
+    {amount} products
+  </p>
+</header>
+
+<style is:global>
+  .header {
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: hsl(0 0% 100% / 1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 1.75rem 0.25rem 1rem;
+    margin-bottom: -0.25rem;
+    z-index: 200;
+  }
+
+  .tags__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tags__link {
+    display: block;
+    padding: 1rem 0.75rem;
+    border-radius: var(--global-borderRadius);
+    color: var(--global-meta-color);
+  }
+
+  .tags__link:hover,
+  .tags__link--active {
+    color: var(--global-text-color);
+  }
+
+  ::view-transition-new(nav):only-child {
+    animation: var(--global-animation-duration) var(--global-easeOutQuint)
+      slide-from-top;
+  }
+
+  ::view-transition-old(nav):only-child {
+    animation: var(--global-animation-duration) var(--global-easeInQuint)
+      slide-from-top reverse;
+  }
+</style>

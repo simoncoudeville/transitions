@@ -3,60 +3,67 @@ import { Image } from "astro:assets";
 import BaseHead from "../components/BaseHead.astro";
 import Tags from "../components/tags.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.year.valueOf() - b.data.year.valueOf()
-);
+export async function getStaticPaths() {
+  const allPosts = (await getCollection("blog")).sort(
+    (a, b) => a.data.year.valueOf() - b.data.year.valueOf()
+  );
 
-const amountOfPosts = posts.length;
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.data.tags).flat()),
+  ];
 
-const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag)
+    );
+
+    const amountOfPosts = filteredPosts.length;
+
+    return {
+      params: { tag },
+      props: { posts: filteredPosts, tags: uniqueTags, amount: amountOfPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+const { tags } = Astro.props;
+const { amount } = Astro.props;
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<!doctype html>
+<script>
+  // set the nav
+</script>
+
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <Tags tags={tags} currentPath={currentPath} amount={amountOfPosts} />
+    <Tags tags={tags} currentPath={currentPath} amount={amount} />
+    <h1>
+      {pathname}
+    </h1>
     <main class="items">
-      <!-- {
-        posts.map((post) => (
-          // create an id based on the post's title
-          <article class={`item u-x-span-${post.data.size}-bp3`}>
-            <a class="item__link" href={`/${post.slug}/`}>
-              <Image
-                class="item__img"
-                width="600"
-                height="600"
-                src={post.data.heroImage}
-                alt={post.data.title}
-              />
-              <h2 class="item__title">{post.data.title}</h2>
-              <p class="item__year">{post.data.year}</p>
-              <p class="item__desc">{post.data.authors}</p>
-            </a>
-          </article>
-        ))
-      } -->
       {
         posts.map((post) => (
           // create an id based on the post's title
-          <article class={`item u-x-span-${post.data.size}-bp3`}>
+          // <article class={`item u-x-span-${post.data.size}-bp3`}>
+          <article class={`item u-x-span-4-bp3`}>
             <a class="item__link" href={`/${post.slug}/`}>
               <Image
                 class="item__img"
                 width="600"
                 height="600"
-                transition:name={`image-${post.data.postId}`}
                 src={post.data.heroImage}
                 alt={post.data.title}
+                transition:name={`image-${post.data.postId}`}
               />
               <h2 class="item__title">{post.data.title}</h2>
               <p class="item__year">{post.data.year}</p>

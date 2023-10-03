@@ -1,0 +1,98 @@
+<a href="/" class="back" transition:name="back">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <rect width="256" height="256" fill="none"></rect>
+    <polyline
+      points="160 208 80 128 160 48"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="12"></polyline>
+  </svg>
+</a>
+
+<style is:global>
+  .back {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    background-color: var(--global-color-neutral-100);
+    color: var(--global-text-color);
+    border-radius: 100%;
+    view-transition-name: back;
+
+    & svg {
+      fill: currentColor;
+      width: 1.5rem;
+      aspect-ratio: 1/1;
+      pointer-events: none;
+    }
+  }
+
+  ::view-transition-new(back) {
+    animation: var(--global-animation-duration) var(--global-easeOutQuint)
+      slide-from-left;
+  }
+
+  ::view-transition-old(back) {
+    animation: var(--global-animation-duration) var(--global-easeInQuint)
+      slide-from-left reverse;
+  }
+</style>
+
+<script>
+  import { navigate } from "astro:transitions/client";
+
+  const navigateBack = () => {
+    // const backButton = document.querySelector(".back");
+    // if (!backButton) return;
+    // backButton.addEventListener("click", (e) => {
+    //   e.preventDefault();
+    //   // get the back button href atrribute
+    //   const href = e.target.href;
+    //   // console.log("referrer =" + document.referrer);
+    //   // console.log("href =" + href);
+    //   // console.log("index = " + window.location.origin + "/");
+
+    //   if (
+    //     href === document.referrer ||
+    //     document.referrer === "" ||
+    //     document.referrer === null ||
+    //     !document.referrer
+    //   ) {
+    //     window.history.back();
+    //   } else {
+    //     navigate(href);
+    //   }
+    // });
+
+    const backButton = document.querySelector(".back");
+    if (!backButton) return;
+    backButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const href = e.target.href;
+      backHandler(href);
+      // navigate(href);
+    });
+  };
+
+  async function backHandler(href) {
+    if (navigation.canGoBack) {
+      await navigation.back().finished;
+      // Handle any required clean-up after
+      // navigation has finished
+    } else {
+      console.log("You are on the first page");
+      navigate(href);
+    }
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    navigateBack();
+  });
+</script>
