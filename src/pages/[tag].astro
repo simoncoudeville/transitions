@@ -47,9 +47,6 @@ const currentPath = pathname.slice(1); // remove the first "/"
   </head>
   <body>
     <Tags tags={tags} currentPath={currentPath} amount={amount} />
-    <h1>
-      {pathname}
-    </h1>
     <main class="items">
       {
         posts.map((post) => (

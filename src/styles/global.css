@@ -182,7 +182,7 @@ dt {
 	position: relative;
 	overflow: hidden;
 	height: 100%;
-	/* border-radius: var(--global-borderRadius-l); */
+	border-radius: var(--global-borderRadius);
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;
@@ -407,6 +407,10 @@ dt {
 
 .color-meta {
 	color: var(--global-meta-color);
+}
+
+.font-size-base {
+	font-size: 1rem;
 }
 
 .max-width-m {
