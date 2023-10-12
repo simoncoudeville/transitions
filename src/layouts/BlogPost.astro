@@ -15,7 +15,7 @@ const { postId, title, description, year, heroImage, authors } = Astro.props;
   </head>
 
   <body>
-    <main class="bg-color-neutral-075">
+    <div class="bg-foregroundColor">
       <BackLink />
       <article class="detail">
         <header class="detail__intro">
@@ -34,10 +34,10 @@ const { postId, title, description, year, heroImage, authors } = Astro.props;
             alt={title}
           />
           <div class="detail__header" transition:name="detail-header">
-            <h1 class="detail__title">{title}</h1>
             <p class="detail__desc">
               {authors}
             </p>
+            <h1 class="detail__title">{title}</h1>
           </div>
         </header>
         <div class="detail__body">
@@ -58,6 +58,6 @@ const { postId, title, description, year, heroImage, authors } = Astro.props;
           </dl>
         </div>
       </article>
-    </main>
+    </div>
   </body>
 </html>

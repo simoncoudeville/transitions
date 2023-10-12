@@ -44,7 +44,7 @@ const { tags, currentPath, amount } = Astro.props;
     top: 0;
     right: 0;
     left: 0;
-    background-color: hsl(0 0% 100% / 1);
+    background-color: var(--global-backgroundColor);
     /* display: flex;
     align-items: center;
     justify-content: space-between; */
@@ -56,7 +56,7 @@ const { tags, currentPath, amount } = Astro.props;
     padding: 0.25rem 1.75rem 0.25rem 1rem;
     margin-bottom: -0.25rem;
     z-index: 200;
-    /* contain: paint; */
+    contain: layout paint;
   }
 
   .header__amount {
@@ -80,13 +80,70 @@ const { tags, currentPath, amount } = Astro.props;
     color: var(--global-text-color);
   }
 
+  ::view-transition-new(header) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-old(header) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
   ::view-transition-new(header):only-child {
-    animation: var(--global-animation-duration) var(--global-easeOut)
-      slide-from-top;
+    animation:
+      var(--global-animation-duration-fast) linear
+        var(--global-animation-duration-fast) both fade-in,
+      var(--global-animation-duration-fast) var(--global-easeOut)
+        var(--global-animation-duration-fast) both slide-from-top;
   }
 
   ::view-transition-old(header):only-child {
-    animation: var(--global-animation-duration) var(--global-easeIn)
-      slide-from-top reverse;
+    animation:
+      var(--global-animation-duration-fast) linear both fade-out,
+      var(--global-animation-duration-fast) var(--global-easeIn) both
+        slide-to-top;
   }
 </style>
+
+<script>
+  const handleTagLink = () => {
+    console.log("clicked");
+    let itemImages = document.querySelectorAll(".item__img");
+    itemImages.forEach((itemImage) => {
+      itemImage.style.setProperty("view-transition-name", "none");
+      // remove the data-astro-transition-scope attribute
+      // itemImage.removeAttribute("data-astro-transition-scope");
+      // remove the view-transition-name style
+      // itemImage.style.removeProperty("view-transition-name");
+
+      // remove the view-transition-scope style while view transition is busy
+      // itemImage.addEventListener("view-transition-start", () => {
+      //   // itemImage.style.removeProperty("view-transition-scope");
+      //   // itemImage.style.removeProperty("view-transition-name");
+      //   // set the css view-transition-name property to the value none
+      //   itemImage.style.setProperty("view-transition-name", "none");
+
+      //   // remove the property after the transition is done
+      //   itemImage.addEventListener("view-transition-end", () => {
+      //     itemImage.style.removeProperty("view-transition-name");
+      //   });
+      // });
+      // let transition = document.startViewTransition(() => {
+      //   itemImage.style.setProperty("view-transition-name", "none");
+      // });
+
+      // transition.ready.then(() => {
+      //   itemImage.style.setProperty("view-transition-name", "none");
+      // });
+    });
+  };
+
+  document.addEventListener("astro:page-load", () => {
+    let tagLinks = document.querySelectorAll(".tags__link");
+    // handleTagLink();
+    tagLinks.forEach((tagLink) => {
+      tagLink.addEventListener("click", handleTagLink);
+    });
+  });
+</script>

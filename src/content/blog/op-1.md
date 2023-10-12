@@ -6,7 +6,7 @@ pubDate: "Jul 08 2022"
 year: 2022
 heroImage: "./op-1.avif"
 authors: Teenage Engineering
-tags: ["audio"]
+tags: ["audio", "synths"]
 size: 6
 ---
 

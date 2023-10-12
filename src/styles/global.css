@@ -4,61 +4,51 @@
 	font-weight: 300;
 }
 
-@keyframes fade {
-	0% {
+@keyframes fade-in {
+	from {
 		opacity: 0;
 	}
+}
 
-	100% {
-		opacity: 1;
+@keyframes fade-out {
+	to {
+		opacity: 0;
 	}
 }
 
 @keyframes slide-from-left {
-	0% {
-		opacity: 0;
+	from {
 		transform: translateX(-1rem);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateX(0);
 	}
 }
 
-@keyframes grow {
-	0% {
-		opacity: 0;
-		transform: scale(.9);
-	}
-
-	100% {
-		opacity: 1;
-		transform: scale(1);
+@keyframes slide-to-left {
+	to {
+		transform: translateX(-1rem);
 	}
 }
 
 @keyframes slide-from-top {
-	0% {
-		opacity: 0;
+	from {
 		transform: translateY(-1rem);
 	}
+}
 
-	100% {
-		opacity: 1;
-		transform: translateY(0);
+@keyframes slide-to-top {
+	to {
+		transform: translateY(-1rem);
 	}
 }
 
 @keyframes slide-from-bottom {
-	0% {
-		opacity: 0;
+	from {
 		transform: translateY(1rem);
 	}
+}
 
-	100% {
-		opacity: 1;
-		transform: translateY(0);
+@keyframes slide-to-bottom {
+	to {
+		transform: translateY(1rem);
 	}
 }
 
@@ -71,51 +61,128 @@
 	--global-color-neutral-200: hsl(0 0% 80%);
 	--global-color-neutral-300: hsl(0 0% 70%);
 	--global-color-neutral-400: hsl(0 0% 60%);
-	--global-color-neutral-500: hsl(0 0% 50%);
+	--global-color-neutral-500: hsl(0 0% 46%);
 	--global-color-neutral-600: hsl(0 0% 40%);
 	--global-color-neutral-700: hsl(0 0% 30%);
 	--global-color-neutral-800: hsl(0 0% 20%);
 	--global-color-neutral-900: hsl(0 0% 10%);
 	--global-color-neutral-1000: hsl(0 0% 0%);
 
+	--global-foregroundColor: var(--global-color-neutral-075);
+	--global-backgroundColor: var(--global-color-neutral-000);
+	--global-text-color: var(--global-color-neutral-1000);
+	--global-meta-color: var(--global-color-neutral-500);
+
 	--global-borderRadius: .5rem;
 	--global-borderRadius-l: 1rem;
 
-	/* --global-fontFamily: "Graphik Web", sans-serif; */
-	--global-fontFamily: "Axalp Grotesk", sans-serif;
+	--global-fontFamily: "Graphik Web", sans-serif;
+	/* --global-fontFamily: "Axalp Grotesk", sans-serif; */
 
-	--global-text-color: var(--global-color-neutral-1000);
-	--global-meta-color: var(--global-color-neutral-500);
+	--global-easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	--global-easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+	--global-easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+	--global-easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+	--global-easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	--global-easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+	--global-easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+	--global-easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+	--global-easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
 
 	--global-easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
 	--global-easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
 	--global-easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
 
+	--global-easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+	--global-easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+	--global-easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+	--global-easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+	--global-easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	--global-easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+
+	--global-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+	--global-easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+	--global-easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+	--global-easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	--global-easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+	--global-easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
 	/* --global-easeOut: var(--global-easeOutQuint);
 	--global-easeIn: var(--global-easeInQuint);
 	--global-easeInOut: var(--global-easeInOutQuint); */
-	--global-easeOut: ease-in;
-	--global-easeIn: ease-out;
-	--global-easeInOut: ease-in-out;
+	/* --global-easeOut: ease-out;
+	--global-easeIn: ease-in;
+	--global-easeInOut: ease-in-out; */
+	--global-easeOut: var(--global-easeOutQuad);
+	--global-easeIn: var(--global-easeInQuad);
+	--global-easeInOut: var(--global-easeInOutQuad);
 
-	--global-animation-duration: 300ms;
-	--global-animation-duration-slow: 600ms;
-	--global-animation-duration-fast: 150ms;
+	--global-animation-duration-xx-slow: 1420ms;
+	--global-animation-duration-x-slow: 360ms;
+	--global-animation-duration-slow: 300ms;
+	--global-animation-duration: 240ms;
+	--global-animation-duration-fast: 180ms;
+	--global-animation-duration-x-fast: 120ms;
+	--global-animation-duration-xx-fast: 100ms;
+
+}
+
+/* @media (prefers-color-scheme: dark) {
+	:root {
+		--global-foregroundColor: var(--global-color-neutral-900);
+		--global-backgroundColor: var(--global-color-neutral-1000);
+		--global-text-color: var(--global-color-neutral-100);
+		--global-meta-color: var(--global-color-neutral-500);
+	}
+} */
+
+::view-transition-old(root) {
+	animation: none !important;
 }
 
 ::view-transition-new(root) {
-	animation: var(--global-animation-duration) var(--global-easeOut) fade;
+	animation: none !important;
 }
 
+/*
 ::view-transition-old(root) {
-	animation: var(--global-animation-duration) var(--global-easeIn) fade reverse;
+	animation: var(--global-animation-duration-xx-slow) var(--global-easeIn) both fade-out !important;
 }
+
+::view-transition-new(root) {
+	animation: var(--global-animation-duration-xx-slow) var(--global-easeOut) both fade-in !important;
+} */
+
+/*
+main {
+	view-transition-name: main;
+}
+
+::view-transition-new(main) {
+	animation:
+		var(--global-animation-duration-fast) linear var(--global-animation-duration-xx-fast) both fade-in,
+		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration-xx-fast) both slide-from-bottom;
+}
+
+[data-astro-transition="back"]::view-transition-new(main) {
+	animation:
+		var(--global-animation-duration-fast) linear var(--global-animation-duration-xx-fast) both fade-in,
+}
+
+::view-transition-old(main) {
+	animation: var(--global-animation-duration-xx-fast) linear both fade-out;
+} */
 
 html {
 	font-family: var(--global-fontFamily);
 	font-weight: 300;
 	font-size: calc(18/16 * 1rem);
 	line-height: 1.5;
+	background-color: var(--global-backgroundColor);
 	color: var(--global-text-color);
 }
 
@@ -167,6 +234,9 @@ dt {
 	display: grid;
 	gap: .25rem;
 	padding: .25rem;
+	/* dense grid */
+	grid-auto-flow: dense;
+
 
 	/* @media screen and (min-width: 800px) { */
 	grid-template-columns: repeat(12, 1fr);
@@ -190,25 +260,23 @@ dt {
 	overflow: hidden;
 	height: 100%;
 	border-radius: var(--global-borderRadius);
-	display: flex;
-	flex-direction: column;
 	text-decoration: none;
-	background-color: var(--global-color-neutral-075);
+	background-color: var(--global-foregroundColor);
 	display: grid;
-	grid-template-rows: auto 1fr auto auto;
+	grid-template-rows: 1fr auto auto;
 }
 
 .item__title {
 	font-size: 1rem;
 	grid-column: 1;
-	padding: 0 1.5rem;
+	padding: 0 1.5rem 1.5rem;
 }
 
 .item__desc {
 	font-size: 1rem;
 	grid-column: 1;
 	color: var(--global-meta-color);
-	padding: 0 1.5rem 1.5rem;
+	padding: 0 1.5rem;
 }
 
 .item__year {
@@ -250,15 +318,18 @@ dt {
 .detail__header {
 	grid-row: 2;
 	padding: 0 1.5rem 1.5rem;
-	/* view-transition-name: detail-header; */
 }
 
 ::view-transition-new(detail-header) {
-	animation: var(--global-animation-duration) var(--global-easeOut) slide-from-bottom;
+	animation:
+		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration-fast) both fade-in,
+		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration-fast) both slide-from-bottom;
 }
 
 ::view-transition-old(detail-header) {
-	animation: var(--global-animation-duration) var(--global-easeIn) slide-from-bottom reverse;
+	animation:
+		var(--global-animation-duration-fast) var(--global-easeIn) both fade-out,
+		var(--global-animation-duration-fast) var(--global-easeIn) both slide-to-bottom;
 }
 
 .detail__desc {
@@ -358,6 +429,10 @@ dt {
 
 .color-neutral-1000 {
 	color: var(--global-color-neutral-1000);
+}
+
+.bg-foregroundColor {
+	background-color: var(--global-foregroundColor);
 }
 
 .color-neutral-900 {

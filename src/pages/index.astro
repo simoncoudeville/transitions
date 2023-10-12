@@ -1,7 +1,7 @@
 ---
-import { Image } from "astro:assets";
 import BaseHead from "../components/BaseHead.astro";
-import Tags from "../components/tags.astro";
+import Tags from "../components/Tags.astro";
+import Article from "../components/Article.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 import { getCollection } from "astro:content";
@@ -26,43 +26,16 @@ const currentPath = pathname.slice(1); // remove the first "/"
   <body>
     <Tags tags={tags} currentPath={currentPath} amount={amountOfPosts} />
     <main class="items">
-      <!-- {
-        posts.map((post) => (
-          // create an id based on the post's title
-          <article class={`item u-x-span-${post.data.size}-bp3`}>
-            <a class="item__link" href={`/${post.slug}/`}>
-              <Image
-                class="item__img"
-                width="600"
-                height="600"
-                src={post.data.heroImage}
-                alt={post.data.title}
-              />
-              <h2 class="item__title">{post.data.title}</h2>
-              <p class="item__year">{post.data.year}</p>
-              <p class="item__desc">{post.data.authors}</p>
-            </a>
-          </article>
-        ))
-      } -->
       {
         posts.map((post) => (
-          // create an id based on the post's title
-          <article class={`item u-x-span-${post.data.size}-bp3`}>
-            <a class="item__link" href={`/${post.slug}/`}>
-              <Image
-                class="item__img"
-                width="600"
-                height="600"
-                src={post.data.heroImage}
-                alt={post.data.title}
-                transition:name={`image-${post.data.postId}`}
-              />
-              <h2 class="item__title">{post.data.title}</h2>
-              <p class="item__year">{post.data.year}</p>
-              <p class="item__desc">{post.data.authors}</p>
-            </a>
-          </article>
+          <Article
+            size={post.data.size}
+            slug={post.slug}
+            image={post.data.heroImage}
+            title={post.data.title}
+            id={post.data.postId}
+            desc={post.data.authors}
+          />
         ))
       }
     </main>
