@@ -1,12 +1,12 @@
 ---
-postId: "op-1-field"
-title: "OP-1 Field"
+postId: "modular-400"
+title: "pocket operator modular 400"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
-year: 1
-price: "€1999"
-# heroImage: "./op-1.avif"
-heroImage: "/img/op-1.webp"
+year: 3
+price: €290
+# heroImage: "./modular-400.avif"
+heroImage: "/img/modular-400.webp"
 authors: Teenage Engineering
 tags: ["synths"]
 size: 4

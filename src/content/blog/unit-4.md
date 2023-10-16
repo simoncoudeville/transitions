@@ -1,13 +1,13 @@
 ---
-postId: "ob-4"
-title: "OB-4"
+postId: "unit-4"
+title: "Unit-4"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
-year: 2020
-price: €649
-# heroImage: "./ob-4.avif"
-heroImage: "/img/ob-4.webp"
-authors: Teenage Engineering
+year: 6
+price: €79
+# heroImage: "./unit-4.avif"
+heroImage: "/img/unit-4.webp"
+authors: AIAIAI
 tags: ["audio"]
 size: 4
 ---

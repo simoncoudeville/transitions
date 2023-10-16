@@ -26,13 +26,30 @@ const { postId, title, description, year, heroImage, authors } = Astro.props;
             src={heroImage}
             alt={title}
           /> -->
-          <Image
+          <!-- <Image
             class="detail__img"
             width="1000"
             transition:name={`image-${postId}`}
             src={heroImage}
             alt={title}
+          /> -->
+          <img
+            class="detail__img"
+            src={heroImage}
+            width="1000"
+            height="1000"
+            transition:name="detail-image"
+            alt={title}
           />
+          <!-- <img
+            class="detail__img"
+            src={heroImage}
+            width="1000"
+            height="1000"
+            transition:name={`image-${postId}`}
+            alt={title}
+          /> -->
+
           <div class="detail__header" transition:name="detail-header">
             <p class="detail__desc">
               {authors}
@@ -44,18 +61,6 @@ const { postId, title, description, year, heroImage, authors } = Astro.props;
           <div class="flow max-width-m">
             <slot />
           </div>
-          <dl>
-            <dt>Company</dt>
-            <dd>Braun AG</dd>
-            <dt>Country</dt>
-            <dd>Germany</dd>
-            <dt>Year</dt>
-            <dd>{year}</dd>
-            <dt>Materials</dt>
-            <dd>plastic, vinyl</dd>
-            <dt>Dimensions</dt>
-            <dd>5 h × 7 w × 2¼ d in (13 × 18 × 6 cm)</dd>
-          </dl>
         </div>
       </article>
     </div>

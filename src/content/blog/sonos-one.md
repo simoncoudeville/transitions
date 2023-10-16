@@ -3,11 +3,13 @@ postId: "sonos-one"
 title: "One Smart Speaker"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
-year: 2023
-heroImage: "./sonos-one.png"
+year: 20
+price: $230
+# heroImage: "./unit-4.avif"
+heroImage: "/img/sonos-one.png"
 authors: Sonos
 tags: ["audio"]
-size: 3
+size: 4
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+The Sonos One is a compact but powerful smart speaker that delivers deep and rich sound. It comes with Alexa and Google Assistant built-in and can be wirelessly connected to other Sonos speakers in your home.

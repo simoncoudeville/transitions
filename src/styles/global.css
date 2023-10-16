@@ -52,6 +52,18 @@
 	}
 }
 
+@keyframes grow-from-center {
+	from {
+		transform: scale(.9);
+	}
+}
+
+@keyframes shrink-to-center {
+	to {
+		transform: scale(.9);
+	}
+}
+
 :root {
 	--global-color-neutral-000: #ffffff;
 	--global-color-neutral-025: hsl(0 0% 97.5%);
@@ -68,7 +80,7 @@
 	--global-color-neutral-900: hsl(0 0% 10%);
 	--global-color-neutral-1000: hsl(0 0% 0%);
 
-	--global-foregroundColor: var(--global-color-neutral-075);
+	--global-foregroundColor: var(--global-color-neutral-050);
 	--global-backgroundColor: var(--global-color-neutral-000);
 	--global-text-color: var(--global-color-neutral-1000);
 	--global-meta-color: var(--global-color-neutral-500);
@@ -124,14 +136,15 @@
 	--global-animation-duration-xx-slow: 1420ms;
 	--global-animation-duration-x-slow: 360ms;
 	--global-animation-duration-slow: 300ms;
-	--global-animation-duration: 240ms;
-	--global-animation-duration-fast: 180ms;
-	--global-animation-duration-x-fast: 120ms;
+	--global-animation-duration: 300ms;
+	--global-animation-duration-fast: 150ms;
+	--global-animation-duration-x-fast: 125ms;
 	--global-animation-duration-xx-fast: 100ms;
 
 }
 
-/* @media (prefers-color-scheme: dark) {
+/*
+@media (prefers-color-scheme: dark) {
 	:root {
 		--global-foregroundColor: var(--global-color-neutral-900);
 		--global-backgroundColor: var(--global-color-neutral-1000);
@@ -140,42 +153,14 @@
 	}
 } */
 
+
 ::view-transition-old(root) {
-	animation: none !important;
+	animation: var(--global-animation-duration) var(--global-easeIn) both fade-out !important;
 }
 
 ::view-transition-new(root) {
-	animation: none !important;
+	animation: var(--global-animation-duration) var(--global-easeOut) both fade-in !important;
 }
-
-/*
-::view-transition-old(root) {
-	animation: var(--global-animation-duration-xx-slow) var(--global-easeIn) both fade-out !important;
-}
-
-::view-transition-new(root) {
-	animation: var(--global-animation-duration-xx-slow) var(--global-easeOut) both fade-in !important;
-} */
-
-/*
-main {
-	view-transition-name: main;
-}
-
-::view-transition-new(main) {
-	animation:
-		var(--global-animation-duration-fast) linear var(--global-animation-duration-xx-fast) both fade-in,
-		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration-xx-fast) both slide-from-bottom;
-}
-
-[data-astro-transition="back"]::view-transition-new(main) {
-	animation:
-		var(--global-animation-duration-fast) linear var(--global-animation-duration-xx-fast) both fade-in,
-}
-
-::view-transition-old(main) {
-	animation: var(--global-animation-duration-xx-fast) linear both fade-out;
-} */
 
 html {
 	font-family: var(--global-fontFamily);
@@ -236,11 +221,7 @@ dt {
 	padding: .25rem;
 	/* dense grid */
 	grid-auto-flow: dense;
-
-
-	/* @media screen and (min-width: 800px) { */
 	grid-template-columns: repeat(12, 1fr);
-	/* } */
 }
 
 .item {
@@ -291,13 +272,15 @@ dt {
 	margin: auto;
 	width: 100%;
 	height: auto;
+	aspect-ratio: 1 / 1;
+	object-fit: contain;
 	max-width: 400px;
-	transition: var(--global-animation-duration) var(--global-easeOutQuint);
+	transition: var(--global-animation-duration) var(--global-easeInOut);
 	mix-blend-mode: darken;
 
-	.item__link:hover & {
+	/* .item__link:hover & {
 		transform: scale(1.05);
-	}
+	} */
 }
 
 .item__body {
@@ -305,8 +288,6 @@ dt {
 	flex-direction: column;
 	align-items: flex-start;
 }
-
-.detail {}
 
 .detail__title,
 .detail__desc {
@@ -319,6 +300,7 @@ dt {
 	grid-row: 2;
 	padding: 0 1.5rem 1.5rem;
 }
+
 
 ::view-transition-new(detail-header) {
 	animation:
@@ -354,18 +336,24 @@ dt {
 .detail__img {
 	max-height: calc(100vh - 6rem);
 	width: auto;
+	aspect-ratio: 1 / 1;
+	object-fit: contain;
 	margin: auto;
 	mix-blend-mode: darken;
 }
 
-/*
+
 ::view-transition-new(detail-image) {
-	animation: var(--global-animation-duration) var(--global-easeOutQuint) grow;
+	animation:
+		var(--global-animation-duration-fast) var(--global-easeOut) both fade-in,
+		var(--global-animation-duration-fast) var(--global-easeOut) both grow-from-center;
 }
 
 ::view-transition-old(detail-image) {
-	animation: var(--global-animation-duration) var(--global-easeInQuint) grow reverse;
-} */
+	animation:
+		var(--global-animation-duration-fast) var(--global-easeIn) both fade-out,
+		var(--global-animation-duration-fast) var(--global-easeIn) both shrink-to-center;
+}
 
 @media (min-width: 75em) {
 

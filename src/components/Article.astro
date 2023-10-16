@@ -5,14 +5,15 @@ const { size, slug, title, id, image, desc } = Astro.props;
 
 <article class={`item u-x-span-${size}-bp3`}>
   <a class="item__link" href={`/${slug}/`}>
-    <Image
+    <!-- <Image
       class="item__img"
       width="600"
       height="600"
       src={image}
       alt={title}
       transition:name={`image-${id}`}
-    />
+    /> -->
+    <img class="item__img" width="600" height="600" src={image} alt={title} />
     <!-- <Image class="item__img" width="600" height="600" src={image} alt={title} /> -->
     <p class="item__desc">{desc}</p>
     <h2 class="item__title">{title}</h2>

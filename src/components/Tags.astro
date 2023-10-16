@@ -2,7 +2,7 @@
 const { tags, currentPath, amount } = Astro.props;
 ---
 
-<header class="header" transition:name="header">
+<header class="header">
   <nav class="tags">
     <ul class="tags__list list-reset">
       <li class="tags__item">
@@ -45,18 +45,13 @@ const { tags, currentPath, amount } = Astro.props;
     right: 0;
     left: 0;
     background-color: var(--global-backgroundColor);
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between; */
     display: grid;
-    /* grid-template-columns: 1fr auto 1fr; */
     grid-template-columns: auto 1fr;
     align-items: center;
-    /* padding: 0.25rem 1.75rem; */
     padding: 0.25rem 1.75rem 0.25rem 1rem;
     margin-bottom: -0.25rem;
     z-index: 200;
-    contain: layout paint;
+    view-transition-name: header;
   }
 
   .header__amount {
@@ -80,16 +75,6 @@ const { tags, currentPath, amount } = Astro.props;
     color: var(--global-text-color);
   }
 
-  ::view-transition-new(header) {
-    animation: none;
-    mix-blend-mode: normal;
-  }
-
-  ::view-transition-old(header) {
-    animation: none;
-    mix-blend-mode: normal;
-  }
-
   ::view-transition-new(header):only-child {
     animation:
       var(--global-animation-duration-fast) linear
@@ -108,22 +93,19 @@ const { tags, currentPath, amount } = Astro.props;
 
 <script>
   const handleTagLink = () => {
-    console.log("clicked");
     let itemImages = document.querySelectorAll(".item__img");
     itemImages.forEach((itemImage) => {
-      itemImage.style.setProperty("view-transition-name", "none");
+      // itemImage.style.setProperty("view-transition-name", "none");
       // remove the data-astro-transition-scope attribute
       // itemImage.removeAttribute("data-astro-transition-scope");
       // remove the view-transition-name style
       // itemImage.style.removeProperty("view-transition-name");
-
       // remove the view-transition-scope style while view transition is busy
       // itemImage.addEventListener("view-transition-start", () => {
       //   // itemImage.style.removeProperty("view-transition-scope");
       //   // itemImage.style.removeProperty("view-transition-name");
       //   // set the css view-transition-name property to the value none
       //   itemImage.style.setProperty("view-transition-name", "none");
-
       //   // remove the property after the transition is done
       //   itemImage.addEventListener("view-transition-end", () => {
       //     itemImage.style.removeProperty("view-transition-name");
@@ -132,7 +114,6 @@ const { tags, currentPath, amount } = Astro.props;
       // let transition = document.startViewTransition(() => {
       //   itemImage.style.setProperty("view-transition-name", "none");
       // });
-
       // transition.ready.then(() => {
       //   itemImage.style.setProperty("view-transition-name", "none");
       // });

@@ -1,13 +1,13 @@
 ---
-postId: "ob-4"
-title: "OB-4"
+postId: "tma-2"
+title: "TMA-2 Studio Wireless+"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
-year: 2020
-price: €649
-# heroImage: "./ob-4.avif"
-heroImage: "/img/ob-4.webp"
-authors: Teenage Engineering
+year: 8
+price: €350
+# heroImage: "./tma-2.avif"
+heroImage: "/img/tma-2.png"
+authors: AIAIAI
 tags: ["audio"]
 size: 4
 ---
