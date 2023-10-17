@@ -12,7 +12,7 @@ const { tags, currentPath, amount } = Astro.props;
             : "tags__link"}
           href="/"
         >
-          All</a
+          all</a
         >
       </li>
       {
@@ -75,6 +75,7 @@ const { tags, currentPath, amount } = Astro.props;
     padding: var(--tag-block-padding) var(--tag-inline-padding);
     border-radius: var(--global-borderRadius);
     color: var(--global-meta-color);
+    text-transform: capitalize;
   }
 
   .tags__link:hover,
@@ -85,9 +86,9 @@ const { tags, currentPath, amount } = Astro.props;
   ::view-transition-new(header):only-child {
     animation:
       var(--global-animation-duration-fast) linear
-        var(--global-animation-duration-fast) both fade-in,
+        var(--global-animation-duration) both fade-in,
       var(--global-animation-duration-fast) var(--global-easeOut)
-        var(--global-animation-duration-fast) both slide-from-top;
+        var(--global-animation-duration) both slide-from-top;
   }
 
   ::view-transition-old(header):only-child {

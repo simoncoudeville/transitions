@@ -6,7 +6,11 @@ import BackLink from "../components/BackLink.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { postId, title, description, year, heroImage, authors } = Astro.props;
+const { title, year, heroImage, authors, company } = Astro.props;
+const id = title.toLowerCase().replace(/\s/g, "-");
+const authorsJoined = authors.join(", ");
+const description =
+  "Designed by" + authorsJoined + "in" + year + "for" + company + ".";
 ---
 
 <html lang="en">
@@ -19,48 +23,54 @@ const { postId, title, description, year, heroImage, authors } = Astro.props;
       <BackLink />
       <article class="detail">
         <header class="detail__intro">
-          <!-- <Image
+          <Image
             class="detail__img"
-            width="1000"
+            width="1500"
             transition:name={`detail-image`}
             src={heroImage}
             alt={title}
-          /> -->
+          />
           <!-- <Image
             class="detail__img"
             width="1000"
-            transition:name={`image-${postId}`}
+            transition:name={`image-${id}`}
             src={heroImage}
             alt={title}
           /> -->
-          <img
+          <!-- <img
             class="detail__img"
             src={heroImage}
             width="1000"
             height="1000"
             transition:name="detail-image"
             alt={title}
-          />
+          /> -->
           <!-- <img
             class="detail__img"
             src={heroImage}
             width="1000"
             height="1000"
-            transition:name={`image-${postId}`}
+            transition:name={`image-${id}`}
             alt={title}
           /> -->
 
           <div class="detail__header" transition:name="detail-header">
-            <p class="detail__desc">
-              {authors}
-            </p>
             <h1 class="detail__title">{title}</h1>
+            <p class="detail__desc">
+              {authorsJoined}
+            </p>
           </div>
         </header>
         <div class="detail__body">
           <div class="flow max-width-m">
             <slot />
           </div>
+          <dl>
+            <dt>Year</dt>
+            <dd>{year}</dd>
+            <dt>Company</dt>
+            <dd>{company}</dd>
+          </dl>
         </div>
       </article>
     </div>

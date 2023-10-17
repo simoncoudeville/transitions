@@ -1,14 +1,17 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
 import Tags from "../components/Tags.astro";
 import Article from "../components/Article.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.year.valueOf() - b.data.year.valueOf()
-);
+const posts = (
+  await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
+  })
+).sort((a, b) => a.data.year.valueOf() - b.data.year.valueOf());
 
 const amountOfPosts = posts.length;
 
@@ -34,10 +37,12 @@ const currentPath = pathname.slice(1); // remove the first "/"
             image={post.data.heroImage}
             title={post.data.title}
             id={post.data.postId}
-            desc={post.data.authors}
+            authors={post.data.authors}
+            year={post.data.year}
           />
         ))
       }
     </main>
+    <Footer />
   </body>
 </html>

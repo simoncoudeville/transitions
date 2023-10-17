@@ -1,12 +1,16 @@
 ---
 import { Image } from "astro:assets";
-const { size, slug, title, image, desc } = Astro.props;
+const { size, year, slug, title, image, authors } = Astro.props;
 // make an id for each item based on the title
 const id = title.toLowerCase().replace(/\s/g, "-");
+const authorsJoined = authors.join(" & ");
 ---
 
-<article class={`item u-x-span-${size}-bp3`}>
+<article class={`item`}>
   <a class="item__link" href={`/${slug}/`}>
+    <p class="item__year">
+      {year}
+    </p>
     <!-- <Image
       class="item__img"
       width="600"
@@ -15,11 +19,11 @@ const id = title.toLowerCase().replace(/\s/g, "-");
       alt={title}
       transition:name={`image-${id}`}
     /> -->
-    <!-- <Image class="item__img" width="600" height="600" src={image} alt={title} /> -->
-    <img class="item__img" width="600" height="600" src={image} alt={title} />
+    <Image class="item__img" width="800" height="800" src={image} alt={title} />
+    <!-- <img class="item__img" width="600" height="600" src={image} alt={title} /> -->
     <header class="item__header">
-      <p class="item__desc">{desc}</p>
       <h2 class="item__title">{title}</h2>
+      <p class="item__desc">{authorsJoined}</p>
     </header>
   </a>
 </article>
