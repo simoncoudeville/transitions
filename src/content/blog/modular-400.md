@@ -1,9 +1,8 @@
 ---
-postId: "modular-400"
 title: "pocket operator modular 400"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
-year: 3
+year: 30
 price: €290
 # heroImage: "./modular-400.avif"
 heroImage: "/img/modular-400.webp"

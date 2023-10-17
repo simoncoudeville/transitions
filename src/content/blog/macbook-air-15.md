@@ -3,7 +3,7 @@ postId: "macbook-air-15"
 title: "MacBook Air 15'"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
-year: 20
+year: 2
 price: $40
 # heroImage: "./unit-4.avif"
 heroImage: "/img/macbook-air-15.jpeg"

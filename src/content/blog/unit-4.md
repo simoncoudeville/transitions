@@ -1,9 +1,8 @@
 ---
-postId: "unit-4"
 title: "Unit-4"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
-year: 6
+year: 3
 price: €79
 # heroImage: "./unit-4.avif"
 heroImage: "/img/unit-4.webp"

@@ -1,5 +1,4 @@
 ---
-postId: "sonos-one"
 title: "One Smart Speaker"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"

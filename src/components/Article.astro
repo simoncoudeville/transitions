@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
-const { size, slug, title, id, image, desc } = Astro.props;
+const { size, slug, title, image, desc } = Astro.props;
+// make an id for each item based on the title
+const id = title.toLowerCase().replace(/\s/g, "-");
 ---
 
 <article class={`item u-x-span-${size}-bp3`}>
@@ -13,10 +15,12 @@ const { size, slug, title, id, image, desc } = Astro.props;
       alt={title}
       transition:name={`image-${id}`}
     /> -->
-    <img class="item__img" width="600" height="600" src={image} alt={title} />
     <!-- <Image class="item__img" width="600" height="600" src={image} alt={title} /> -->
-    <p class="item__desc">{desc}</p>
-    <h2 class="item__title">{title}</h2>
+    <img class="item__img" width="600" height="600" src={image} alt={title} />
+    <header class="item__header">
+      <p class="item__desc">{desc}</p>
+      <h2 class="item__title">{title}</h2>
+    </header>
   </a>
 </article>
 

@@ -141,6 +141,20 @@
 	--global-animation-duration-x-fast: 125ms;
 	--global-animation-duration-xx-fast: 100ms;
 
+	/* whitespace */
+
+	--global-space-xxxs: .25rem;
+	--global-space-xxs: .5rem;
+	--global-space-xs: .75rem;
+	--global-space-s: 1rem;
+	--global-space-m: 1.5rem;
+	--global-space-l: 2rem;
+	--global-space-xl: 3rem;
+	--global-space-xxl: 4.5rem;
+	--global-space-xxxl: 6rem;
+
+	--global-grid-gap: var(--global-space-s);
+	--global-grid-padding: var(--global-space-m);
 }
 
 /*
@@ -217,8 +231,8 @@ dt {
 	position: relative;
 	z-index: 100;
 	display: grid;
-	gap: .25rem;
-	padding: .25rem;
+	gap: var(--global-grid-gap);
+	padding: var(--global-grid-gap);
 	/* dense grid */
 	grid-auto-flow: dense;
 	grid-template-columns: repeat(12, 1fr);
@@ -244,20 +258,20 @@ dt {
 	text-decoration: none;
 	background-color: var(--global-foregroundColor);
 	display: grid;
-	grid-template-rows: 1fr auto auto;
+	grid-template-rows: 1fr auto;
+}
+
+.item__header {
+	grid-row: 2;
+	padding: 0 var(--global-space-m) var(--global-space-m);
 }
 
 .item__title {
 	font-size: 1rem;
-	grid-column: 1;
-	padding: 0 1.5rem 1.5rem;
 }
 
 .item__desc {
-	font-size: 1rem;
-	grid-column: 1;
 	color: var(--global-meta-color);
-	padding: 0 1.5rem;
 }
 
 .item__year {
@@ -275,18 +289,12 @@ dt {
 	aspect-ratio: 1 / 1;
 	object-fit: contain;
 	max-width: 400px;
-	transition: var(--global-animation-duration) var(--global-easeInOut);
+	transition: var(--global-animation-duration-fast) var(--global-easeInOut);
 	mix-blend-mode: darken;
 
-	/* .item__link:hover & {
+	.item__link:hover & {
 		transform: scale(1.05);
-	} */
-}
-
-.item__body {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
+	}
 }
 
 .detail__title,
@@ -298,7 +306,7 @@ dt {
 
 .detail__header {
 	grid-row: 2;
-	padding: 0 1.5rem 1.5rem;
+	padding: 0 var(--global-space-m) var(--global-space-m);
 }
 
 
@@ -319,9 +327,9 @@ dt {
 }
 
 .detail__body {
-	padding: 0 1.5rem 1.5rem;
+	padding: 0 var(--global-space-m) var(--global-space-m);
 	display: grid;
-	gap: 1.5rem;
+	gap: var(--global-space-m);
 	/* auto responsive columns */
 	grid-template-columns: repeat(auto-fill, minmax(min(26rem, 100%), 1fr));
 	align-items: start;

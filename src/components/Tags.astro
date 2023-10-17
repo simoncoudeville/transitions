@@ -40,6 +40,8 @@ const { tags, currentPath, amount } = Astro.props;
 
 <style is:global>
   .header {
+    --tag-inline-padding: var(--global-space-xs);
+    --tag-block-padding: var(--global-space-s);
     position: sticky;
     top: 0;
     right: 0;
@@ -48,14 +50,19 @@ const { tags, currentPath, amount } = Astro.props;
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    padding: 0.25rem 1.75rem 0.25rem 1rem;
-    margin-bottom: -0.25rem;
+    padding: var(--global-space-xxxs)
+      calc(
+        var(--global-grid-gap) + var(--global-grid-padding) -
+          var(--tag-inline-padding)
+      );
+    margin-bottom: calc(var(--global-grid-gap) * -1);
     z-index: 200;
     view-transition-name: header;
   }
 
   .header__amount {
     justify-self: end;
+    padding: var(--tag-block-padding) var(--tag-inline-padding);
   }
 
   .tags__list {
@@ -65,7 +72,7 @@ const { tags, currentPath, amount } = Astro.props;
 
   .tags__link {
     display: block;
-    padding: 1rem 0.75rem;
+    padding: var(--tag-block-padding) var(--tag-inline-padding);
     border-radius: var(--global-borderRadius);
     color: var(--global-meta-color);
   }

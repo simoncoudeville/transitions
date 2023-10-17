@@ -1,5 +1,4 @@
 ---
-postId: "imac"
 title: "iMac 24'"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
@@ -8,7 +7,7 @@ price: $40
 # heroImage: "./unit-4.avif"
 heroImage: "/img/imac-24.jpeg"
 authors: Apple
-tags: ["tech", "home"]
+tags: ["tech"]
 size: 4
 ---
 

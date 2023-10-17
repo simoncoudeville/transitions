@@ -1,5 +1,4 @@
 ---
-postId: "ob-4"
 title: "OB-4"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
