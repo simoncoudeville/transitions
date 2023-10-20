@@ -2,14 +2,33 @@
 const today = new Date();
 ---
 
-<footer class="footer">
-	<p>
-		This site is a demo of how to animate navigation between multiple pages using View Transitions and Astro.
-	</p>
-	<p>
-		All images are courtesy of <a href="https://wright20.com">wright20.com</a>. The texts are generated with chat gpt.
-	</p>
-	<p>
-		Made by <a href="https://simoncoudeville.be">Simon Coudeville</a>. The Source code is available on <a href="">Github</a>."
-	</p>
+<footer class="footer flow">
+  <div class="footer__info">
+    <p>
+      This site is a demo of how to animate navigation between multiple pages
+      using <a
+        href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API"
+        >View Transitions</a
+      > and <a href="https://docs.astro.build/en/guides/view-transitions/"
+        >Astro</a
+      >.
+    </p>
+    <p>
+      All images are courtesy of <a href="https://wright20.com">wright20.com</a
+      >. The texts are generated with chat gpt.
+    </p>
+    <p>
+      Made by <a href="https://simoncoudeville.be">Simon Coudeville</a>. The
+      Source code is available on <a
+        href="https://github.com/simoncoudeville/transitions">Github</a
+      >.
+    </p>
+  </div>
+  <!-- <div class="footer__dots">
+    <span class="footer__dot"></span>
+    <span class="footer__dot"></span>
+    <span class="footer__dot"></span>
+    <span class="footer__dot"></span>
+    <span class="footer__dot"></span>
+  </div> -->
 </footer>

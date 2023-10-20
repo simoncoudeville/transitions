@@ -69,26 +69,33 @@
 @custom-media --large-viewport (min-width: calc(1500/16 * 1em));
 
 :root {
+	--global-color-orange: hsl(31deg 76% 50%);
+	--global-color-tomato: hsl(11deg 74% 49%);
+	--global-color-red: hsl(0deg 68% 42%);
+	--global-color-khaki: hsl(100deg 59% 28%);
+
+	--global-color-neutral-hue: 100deg;
 	--global-color-neutral-000: #ffffff;
-	--global-color-neutral-025: hsl(0 0% 97.5%);
-	--global-color-neutral-050: hsl(0 0% 95%);
-	--global-color-neutral-075: hsl(0 0% 92.5%);
-	--global-color-neutral-100: hsl(0 0% 90%);
-	--global-color-neutral-200: hsl(0 0% 80%);
-	--global-color-neutral-300: hsl(0 0% 70%);
-	--global-color-neutral-400: hsl(0 0% 60%);
-	--global-color-neutral-500: hsl(0 0% 46%);
-	--global-color-neutral-600: hsl(0 0% 40%);
-	--global-color-neutral-700: hsl(0 0% 30%);
-	--global-color-neutral-800: hsl(0 0% 20%);
-	--global-color-neutral-900: hsl(0 0% 10%);
-	--global-color-neutral-1000: hsl(0 0% 0%);
+	--global-color-neutral-025: hsl(var(--global-color-neutral-hue) 5% 97.5%);
+	--global-color-neutral-050: hsl(var(--global-color-neutral-hue) 5% 95%);
+	--global-color-neutral-075: hsl(var(--global-color-neutral-hue) 5% 92.5%);
+	--global-color-neutral-100: hsl(var(--global-color-neutral-hue) 5% 90%);
+	--global-color-neutral-200: hsl(var(--global-color-neutral-hue) 5% 80%);
+	--global-color-neutral-300: hsl(var(--global-color-neutral-hue) 5% 70%);
+	--global-color-neutral-400: hsl(var(--global-color-neutral-hue) 5% 56%);
+	--global-color-neutral-500: hsl(var(--global-color-neutral-hue) 5% 46%);
+	--global-color-neutral-600: hsl(var(--global-color-neutral-hue) 5% 40%);
+	--global-color-neutral-700: hsl(var(--global-color-neutral-hue) 5% 30%);
+	--global-color-neutral-800: hsl(var(--global-color-neutral-hue) 5% 20%);
+	--global-color-neutral-900: hsl(var(--global-color-neutral-hue) 5% 10%);
+	--global-color-neutral-1000: hsl(var(--global-color-neutral-hue) 5% 0%);
 
 	--global-foregroundColor: var(--global-color-neutral-050);
 	--global-backgroundColor: var(--global-color-neutral-000);
 	--global-text-color: var(--global-color-neutral-1000);
-	--global-meta-color: var(--global-color-neutral-500);
+	--global-meta-color: var(--global-color-neutral-400);
 	--global-borderColor: var(--global-color-neutral-100);
+	--global-borderColor-hard: var(--global-color-neutral-200);
 
 	--global-borderRadius: .5rem;
 	--global-borderRadius-l: 1rem;
@@ -229,6 +236,14 @@ dt {
 	margin: 0;
 }
 
+.button-reset {
+	all: unset;
+}
+
+.flow>*+* {
+	margin-top: var(--global-space-m);
+}
+
 .items {
 	position: relative;
 	z-index: 100;
@@ -238,6 +253,7 @@ dt {
 	/* dense grid */
 	grid-auto-flow: dense;
 	grid-template-columns: repeat(12, 1fr);
+	margin-bottom: var(--global-grid-gap);
 }
 
 .item {
@@ -314,7 +330,7 @@ dt {
 	max-width: 22.5rem;
 	transition: var(--global-animation-duration-fast) var(--global-easeInOut);
 	z-index: 100;
-	/* mix-blend-mode: darken; */
+	mix-blend-mode: darken;
 
 	.item__link:hover & {
 		transform: scale(1.05);
@@ -371,7 +387,7 @@ dt {
 	aspect-ratio: 1 / 1;
 	object-fit: contain;
 	margin: auto;
-	/* mix-blend-mode: darken; */
+	mix-blend-mode: darken;
 }
 
 
@@ -390,7 +406,46 @@ dt {
 .footer {
 	color: var(--global-meta-color);
 	/* border-top: 1px solid var(--global-borderColor); */
-	padding: var(--global-grid-padding) calc(var(--global-grid-gap) + var(--global-grid-padding)) calc(var(--global-grid-gap) + var(--global-grid-padding));
+	/* padding: var(--global-grid-padding) calc(var(--global-grid-gap) + var(--global-grid-padding)) calc(var(--global-grid-gap) + var(--global-grid-padding)); */
+	padding: var(--global-space-m);
+
+	& a {
+		/* color: var(--global-color-khaki); */
+		text-decoration: underline;
+		/* text-decoration-color: var(--global-meta-color); */
+		text-decoration-color: var(--global-borderColor-hard);
+	}
+}
+
+.footer__dots {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	gap: var(--global-space-s);
+}
+
+.footer__dot {
+	display: inline-block;
+	width: var(--global-space-m);
+	aspect-ratio: 1 / 1;
+	border-radius: 50%;
+	background-color: var(--global-borderColor-hard);
+
+	&:nth-child(1) {
+		background-color: var(--global-color-orange);
+	}
+
+	&:nth-child(2) {
+		background-color: var(--global-color-tomato);
+	}
+
+	&:nth-child(3) {
+		background-color: var(--global-color-red);
+	}
+
+	&:nth-child(4) {
+		background-color: var(--global-color-khaki);
+	}
 }
 
 @media (--medium-viewport) {

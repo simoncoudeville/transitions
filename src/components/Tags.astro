@@ -32,6 +32,7 @@ const { tags, currentPath, amount } = Astro.props;
         ))
       }
     </ul>
+    <button class="tags__button"> tags</button>
   </nav>
   <p class="header__amount color-meta">
     {amount} products
@@ -39,6 +40,10 @@ const { tags, currentPath, amount } = Astro.props;
 </header>
 
 <style is:global>
+  @custom-media --small-viewport (min-width: 48em);
+  @custom-media --medium-viewport (min-width: 75em);
+  @custom-media --large-viewport (min-width: calc(1500/16 * 1em));
+
   .header {
     --tag-inline-padding: var(--global-space-xs);
     --tag-block-padding: var(--global-space-s);
@@ -66,8 +71,12 @@ const { tags, currentPath, amount } = Astro.props;
   }
 
   .tags__list {
-    display: flex;
-    flex-wrap: wrap;
+    display: none;
+
+    @media (--small-viewport) {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
   .tags__link {
@@ -81,6 +90,12 @@ const { tags, currentPath, amount } = Astro.props;
   .tags__link:hover,
   .tags__link--active {
     color: var(--global-text-color);
+  }
+
+  .tags__button {
+    @media (--small-viewport) {
+      display: none;
+    }
   }
 
   ::view-transition-new(header):only-child {
