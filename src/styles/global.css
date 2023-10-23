@@ -375,6 +375,7 @@ dt {
 	object-fit: contain;
 	margin: auto;
 	mix-blend-mode: darken;
+	view-transition-name: detail-image;
 }
 
 

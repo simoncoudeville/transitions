@@ -11,7 +11,7 @@ const { tags, currentPath, amount } = Astro.props;
           class={currentPath === ""
             ? "tags__link tags__link--active"
             : "tags__link"}
-          href="/"
+          href="./"
         >
           all</a
         >
@@ -33,39 +33,22 @@ const { tags, currentPath, amount } = Astro.props;
         ))
       }
     </ul>
-    <button class="tags__button"> tags</button>
+    <button class="tags__button">tags</button>
   </nav>
   <p class="header__amount color-meta">
     {amount} products
   </p>
 </header>
-
+{
+  /*
 <script>
   const handleTagLink = () => {
     let itemImages = document.querySelectorAll(".item__img");
     itemImages.forEach((itemImage) => {
-      // itemImage.style.setProperty("view-transition-name", "none");
+      itemImage.style.setProperty("view-transition-name", "none");
       // remove the data-astro-transition-scope attribute
-      // itemImage.removeAttribute("data-astro-transition-scope");
+      itemImage.removeAttribute("data-astro-transition-scope");
       // remove the view-transition-name style
-      // itemImage.style.removeProperty("view-transition-name");
-      // remove the view-transition-scope style while view transition is busy
-      // itemImage.addEventListener("view-transition-start", () => {
-      //   // itemImage.style.removeProperty("view-transition-scope");
-      //   // itemImage.style.removeProperty("view-transition-name");
-      //   // set the css view-transition-name property to the value none
-      //   itemImage.style.setProperty("view-transition-name", "none");
-      //   // remove the property after the transition is done
-      //   itemImage.addEventListener("view-transition-end", () => {
-      //     itemImage.style.removeProperty("view-transition-name");
-      //   });
-      // });
-      // let transition = document.startViewTransition(() => {
-      //   itemImage.style.setProperty("view-transition-name", "none");
-      // });
-      // transition.ready.then(() => {
-      //   itemImage.style.setProperty("view-transition-name", "none");
-      // });
     });
   };
 
@@ -77,3 +60,5 @@ const { tags, currentPath, amount } = Astro.props;
     });
   });
 </script>
+*/
+}

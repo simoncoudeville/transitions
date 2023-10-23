@@ -1,9 +1,10 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import BaseHead from "../components/BaseHead.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Tags from "../components/Tags.astro";
 import Article from "../components/Article.astro";
 import Footer from "../components/Footer.astro";
+import { fade } from "astro:transitions";
 
 import { getCollection } from "astro:content";
 
@@ -21,12 +22,7 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
     <Tags tags={tags} currentPath={currentPath} amount={amountOfPosts} />
     <main class="items">
       {
@@ -43,6 +39,4 @@ const currentPath = pathname.slice(1); // remove the first "/"
         ))
       }
     </main>
-    <Footer />
-  </body>
-</html>
+  </BaseLayout>

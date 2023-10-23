@@ -1,9 +1,10 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import BaseHead from "../components/BaseHead.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Tags from "../components/tags.astro";
 import Article from "../components/Article.astro";
 import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { fade } from "astro:transitions";
 
 import { getCollection } from "astro:content";
 
@@ -41,27 +42,21 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Tags tags={tags} currentPath={currentPath} amount={amount} />
-    <main class="items">
-      {
-        posts.map((post) => (
-          <Article
-            size={post.data.size}
-            slug={post.slug}
-            image={post.data.heroImage}
-            title={post.data.title}
-            id={post.data.postId}
-            authors={post.data.authors}
-            year={post.data.year}
-          />
-        ))
-      }
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <Tags tags={tags} currentPath={currentPath} amount={amount} />
+  <main class="items">
+    {
+      posts.map((post) => (
+        <Article
+          size={post.data.size}
+          slug={post.slug}
+          image={post.data.heroImage}
+          title={post.data.title}
+          id={post.data.postId}
+          authors={post.data.authors}
+          year={post.data.year}
+        />
+      ))
+    }
+  </main>
+</BaseLayout>
