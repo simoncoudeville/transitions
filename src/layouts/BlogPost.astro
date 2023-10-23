@@ -18,7 +18,6 @@ const description =
   <head>
     <BaseHead title={title} description={description} />
   </head>
-
   <body>
     <div class="bg-foregroundColor">
       <BackLink />
@@ -26,7 +25,7 @@ const description =
         <header class="detail__intro">
           <Image
             class="detail__img"
-            width="1500"
+            widths={[800, 1500]}
             loading="eager"
             transition:name={`detail-image`}
             src={heroImage}
@@ -38,6 +37,7 @@ const description =
             transition:name={`image-${id}`}
             src={heroImage}
             alt={title}
+            loading="eager"
           /> -->
           <!-- <img
             class="detail__img"

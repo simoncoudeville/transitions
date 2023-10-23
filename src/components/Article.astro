@@ -1,13 +1,13 @@
 ---
 import { Image } from "astro:assets";
-const { size, year, slug, title, image, authors } = Astro.props;
+const { year, slug, title, image, authors } = Astro.props;
 // make an id for each item based on the title
 const id = title.toLowerCase().replace(/\s/g, "-");
 const authorsJoined = authors.join(" & ");
 ---
 
 <article class={`item`}>
-  <a class="item__link" href={`/${slug}/`}>
+  <a class="item__link" href={`/${slug}/`} rel="prefetch-intent">
     <p class="item__year">
       {year}
     </p>

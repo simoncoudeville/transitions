@@ -1,8 +1,10 @@
 ---
-import Article from "../components/Article.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import BaseHead from "../components/BaseHead.astro";
 import Tags from "../components/tags.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Article from "../components/Article.astro";
+import Footer from "../components/Footer.astro";
+
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -39,10 +41,6 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<script>
-  // set the nav
-</script>
-
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -64,5 +62,6 @@ const currentPath = pathname.slice(1); // remove the first "/"
         ))
       }
     </main>
+    <Footer />
   </body>
 </html>

@@ -3,7 +3,12 @@
 ---
 
 <a href="/" class="back" transition:name="back">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <svg
+    aria-labelledby="back-title"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 256 256"
+  >
+    <title id="back-title">Back</title>
     <rect width="256" height="256" fill="none"></rect>
     <polyline
       points="160 208 80 128 160 48"
@@ -13,49 +18,7 @@
       stroke-linejoin="round"
       stroke-width="12"></polyline>
   </svg>
-
-  <!-- ← back -->
 </a>
-
-<style is:global>
-  .back {
-    position: fixed;
-    /* top: 1.5rem;
-    left: 1.5rem; */
-    top: 1.25rem;
-    left: 1.75rem;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* padding: 0.75rem; */
-    /* background-color: var(--global-color-neutral-100); */
-    color: var(--global-text-color);
-    border-radius: 100%;
-
-    & svg {
-      fill: currentColor;
-      width: 1.5rem;
-      aspect-ratio: 1/1;
-      pointer-events: none;
-    }
-  }
-
-  ::view-transition-new(back):only-child {
-    animation:
-      var(--global-animation-duration-fast) linear
-        var(--global-animation-duration-fast) both fade-in,
-      var(--global-animation-duration-fast) var(--global-easeOut)
-        var(--global-animation-duration-fast) both slide-from-left;
-  }
-
-  ::view-transition-old(back):only-child {
-    animation:
-      var(--global-animation-duration-x-fast) linear both fade-out,
-      var(--global-animation-duration-x-fast) var(--global-easeIn) both
-        slide-to-left;
-  }
-</style>
 
 <script>
   import { navigate } from "astro:transitions/client";
@@ -72,9 +35,6 @@
 
   async function backHandler(href) {
     if (navigation.canGoBack) {
-      // get the previous page's URL
-      // const prevPage = navigation.entries()[navigation.currentEntry.index - 1];
-      // console.log(prevPage);
       await navigation.back().finished;
     } else {
       navigate(href);

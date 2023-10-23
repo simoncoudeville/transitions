@@ -3,6 +3,7 @@ const { tags, currentPath, amount } = Astro.props;
 ---
 
 <header class="header">
+  <h1 class="header__logo font-size-base">Rams</h1>
   <nav class="tags">
     <ul class="tags__list list-reset">
       <li class="tags__item">
@@ -38,81 +39,6 @@ const { tags, currentPath, amount } = Astro.props;
     {amount} products
   </p>
 </header>
-
-<style is:global>
-  @custom-media --small-viewport (min-width: 48em);
-  @custom-media --medium-viewport (min-width: 75em);
-  @custom-media --large-viewport (min-width: calc(1500/16 * 1em));
-
-  .header {
-    --tag-inline-padding: var(--global-space-xs);
-    --tag-block-padding: var(--global-space-s);
-    position: sticky;
-    top: 0;
-    right: 0;
-    left: 0;
-    background-color: var(--global-backgroundColor);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    padding: var(--global-space-xxxs)
-      calc(
-        var(--global-grid-gap) + var(--global-grid-padding) -
-          var(--tag-inline-padding)
-      );
-    margin-bottom: calc(var(--global-grid-gap) * -1);
-    z-index: 200;
-    view-transition-name: header;
-  }
-
-  .header__amount {
-    justify-self: end;
-    padding: var(--tag-block-padding) var(--tag-inline-padding);
-  }
-
-  .tags__list {
-    display: none;
-
-    @media (--small-viewport) {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-
-  .tags__link {
-    display: block;
-    padding: var(--tag-block-padding) var(--tag-inline-padding);
-    border-radius: var(--global-borderRadius);
-    color: var(--global-meta-color);
-    text-transform: capitalize;
-  }
-
-  .tags__link:hover,
-  .tags__link--active {
-    color: var(--global-text-color);
-  }
-
-  .tags__button {
-    @media (--small-viewport) {
-      display: none;
-    }
-  }
-
-  ::view-transition-new(header):only-child {
-    animation:
-      var(--global-animation-duration-fast) linear
-        var(--global-animation-duration) both fade-in,
-      var(--global-animation-duration-fast) var(--global-easeOut)
-        var(--global-animation-duration) both slide-from-top;
-  }
-
-  ::view-transition-old(header):only-child {
-    animation:
-      var(--global-animation-duration-fast) linear both fade-out,
-      var(--global-animation-duration-fast) var(--global-easeIn) both
-        slide-to-top;
-  }
-</style>
 
 <script>
   const handleTagLink = () => {

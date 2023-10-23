@@ -91,6 +91,7 @@
 	--global-color-neutral-1000: hsl(var(--global-color-neutral-hue) 5% 0%);
 
 	--global-foregroundColor: var(--global-color-neutral-050);
+	--global-foregroundColor-hover: var(--global-color-neutral-075);
 	--global-backgroundColor: var(--global-color-neutral-000);
 	--global-text-color: var(--global-color-neutral-1000);
 	--global-meta-color: var(--global-color-neutral-400);
@@ -135,12 +136,6 @@
 	--global-easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
 	--global-easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-	/* --global-easeOut: var(--global-easeOutQuint);
-	--global-easeIn: var(--global-easeInQuint);
-	--global-easeInOut: var(--global-easeInOutQuint); */
-	/* --global-easeOut: ease-out;
-	--global-easeIn: ease-in;
-	--global-easeInOut: ease-in-out; */
 	--global-easeOut: var(--global-easeOutQuad);
 	--global-easeIn: var(--global-easeInQuad);
 	--global-easeInOut: var(--global-easeInOutQuad);
@@ -167,22 +162,12 @@
 }
 
 /*
-@media (prefers-color-scheme: dark) {
-	:root {
-		--global-foregroundColor: var(--global-color-neutral-900);
-		--global-backgroundColor: var(--global-color-neutral-1000);
-		--global-text-color: var(--global-color-neutral-100);
-		--global-meta-color: var(--global-color-neutral-500);
-	}
-} */
-
-
-/* ::view-transition-old(root) {
-	animation: var(--global-animation-duration-fast) linear both fade-out !important;
+::view-transition-old(root) {
+	animation: var(--global-animation-duration) var(--global-easeInOut) both fade-out !important;
 }
 
 ::view-transition-new(root) {
-	animation: var(--global-animation-duration-fast) linear both fade-in !important;
+	animation: var(--global-animation-duration) var(--global-easeInOut) both fade-in !important;
 } */
 
 html {
@@ -289,8 +274,11 @@ dt {
 	background-color: var(--global-foregroundColor);
 	display: grid;
 	padding: var(--global-space-m) var(--global-space-m) var(--global-space-xl);
-	/* padding-bottom: var(--global-space-m); */
-	/* grid-template-rows: auto 1fr auto; */
+	transition: var(--global-animation-duration-fast) var(--global-easeInOut);
+
+	&:hover {
+		background-color: var(--global-foregroundColor-hover);
+	}
 }
 
 .item__header {
@@ -315,7 +303,6 @@ dt {
 	grid-column: 1;
 	color: var(--global-meta-color);
 	z-index: 300;
-	/* padding: 1.5rem 1.5rem 0; */
 }
 
 .item__img {
@@ -332,9 +319,9 @@ dt {
 	z-index: 100;
 	mix-blend-mode: darken;
 
-	.item__link:hover & {
+	/* .item__link:hover & {
 		transform: scale(1.05);
-	}
+	} */
 }
 
 .detail__title,
@@ -403,6 +390,105 @@ dt {
 		var(--global-animation-duration-fast) var(--global-easeIn) both shrink-to-center;
 }
 
+.header {
+	--tag-inline-padding: var(--global-space-xs);
+	--tag-block-padding: var(--global-space-s);
+	position: sticky;
+	top: 0;
+	right: 0;
+	left: 0;
+	background-color: var(--global-backgroundColor);
+	display: grid;
+	/* grid-template-columns: auto 1fr; */
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	padding: var(--global-space-xxxs) calc(var(--global-grid-gap) + var(--global-grid-padding) - var(--tag-inline-padding));
+	margin-bottom: calc(var(--global-grid-gap) * -1);
+	z-index: 200;
+	view-transition-name: header;
+}
+
+.header__logo {
+	padding: var(--tag-block-padding) var(--tag-inline-padding);
+}
+
+.header__amount {
+	justify-self: end;
+	padding: var(--tag-block-padding) var(--tag-inline-padding);
+}
+
+.tags__list {
+	display: none;
+
+	@media (--small-viewport) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+.tags__link {
+	display: block;
+	padding: var(--tag-block-padding) var(--tag-inline-padding);
+	border-radius: var(--global-borderRadius);
+	color: var(--global-meta-color);
+	text-transform: capitalize;
+}
+
+.tags__link:hover,
+.tags__link--active {
+	color: var(--global-text-color);
+}
+
+.tags__button {
+	@media (--small-viewport) {
+		display: none;
+	}
+}
+
+
+::view-transition-new(header):only-child {
+	animation:
+		var(--global-animation-duration-fast) linear var(--global-animation-duration-fast) both fade-in,
+		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration-fast) both slide-from-top;
+}
+
+::view-transition-old(header):only-child {
+	animation:
+		var(--global-animation-duration-fast) linear both fade-out,
+		var(--global-animation-duration-fast) var(--global-easeIn) both slide-to-top;
+}
+
+.back {
+	position: fixed;
+	top: 1.25rem;
+	left: 1.75rem;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--global-text-color);
+	border-radius: 100%;
+
+	& svg {
+		fill: currentColor;
+		width: 1.5rem;
+		aspect-ratio: 1/1;
+		pointer-events: none;
+	}
+}
+
+::view-transition-new(back):only-child {
+	animation:
+		var(--global-animation-duration-fast) linear var(--global-animation-duration) both fade-in,
+		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration) both slide-from-left;
+}
+
+::view-transition-old(back):only-child {
+	animation:
+		var(--global-animation-duration-fast) linear both fade-out,
+		var(--global-animation-duration-fast) var(--global-easeIn) both slide-to-left;
+}
+
 .footer {
 	color: var(--global-meta-color);
 	/* border-top: 1px solid var(--global-borderColor); */
@@ -410,9 +496,7 @@ dt {
 	padding: var(--global-space-m);
 
 	& a {
-		/* color: var(--global-color-khaki); */
 		text-decoration: underline;
-		/* text-decoration-color: var(--global-meta-color); */
 		text-decoration-color: var(--global-borderColor-hard);
 	}
 }
@@ -448,37 +532,7 @@ dt {
 	}
 }
 
-@media (--medium-viewport) {
-
-	.u-x-span-3-bp3 {
-		grid-column: span 3;
-	}
-
-	.u-x-span-4-bp3 {
-		grid-column: span 4;
-	}
-
-	.u-x-span-6-bp3 {
-		grid-column: span 6;
-	}
-
-	.u-x-span-8-bp3 {
-		grid-column: span 8;
-	}
-
-	.u-x-span-9-bp3 {
-		grid-column: span 9;
-	}
-
-}
-
-/* y: vertical */
-
-@media (--medium-viewport) {
-	.u-y-span-2-bp3 {
-		grid-row: span 2;
-	}
-}
+/* utilities */
 
 .bg-color-neutral-500 {
 	background-color: var(--global-color-neutral-500);
