@@ -7,7 +7,7 @@ const authorsJoined = authors.join(" & ");
 ---
 
 <article class={`item`}>
-  <a class="item__link" href={`/${slug}/`} rel="prefetch-intent">
+  <a class="item__link" href={`/${slug}/`} rel="prefetch">
     <p class="item__year">
       {year}
     </p>
@@ -20,6 +20,7 @@ const authorsJoined = authors.join(" & ");
       transition:name={`image-${id}`}
     /> -->
     <Image class="item__img" width="800" height="800" src={image} alt={title} />
+    <!-- <Image class="item__img" width="1000" height="1000" src={image} alt={title} /> -->
     <!-- <img class="item__img" width="600" height="600" src={image} alt={title} /> -->
     <header class="item__header">
       <h2 class="item__title">{title}</h2>

@@ -38,12 +38,20 @@ const { posts } = Astro.props;
 const { tags } = Astro.props;
 const { amount } = Astro.props;
 
+const tagUppercased = tag.charAt(0).toUpperCase() + tag.slice(1);
+
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Tags tags={tags} currentPath={currentPath} amount={amount} />
+  <div class="intro">
+    <p class="font-size-l">
+      <!-- <span class="font-weight-bold">{amount}</span> products tagged with{" "} -->
+      <span class="font-weight-bold">{tagUppercased}</span>
+    </p>
+  </div>
   <main class="items">
     {
       posts.map((post) => (
@@ -52,7 +60,6 @@ const currentPath = pathname.slice(1); // remove the first "/"
           slug={post.slug}
           image={post.data.heroImage}
           title={post.data.title}
-          id={post.data.postId}
           authors={post.data.authors}
           year={post.data.year}
         />

@@ -1,10 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Footer from "../components/Footer.astro";
-import BaseHead from "../components/BaseHead.astro";
 import BackLink from "../components/BackLink.astro";
 import { Image } from "astro:assets";
-import { fade } from "astro:transitions";
 import type { CollectionEntry } from "astro:content";
 
 type Props = CollectionEntry<"blog">["data"];
@@ -16,19 +13,32 @@ const description =
   "Designed by" + authorsJoined + "in" + year + "for" + company + ".";
 ---
 
-<BaseLayout title={title} description={description}>
-  <div class="bg-foregroundColor">
-    <BackLink />
-    <article class="detail">
-      <header class="detail__intro">
-        <Image
+<BaseLayout
+  title={title}
+  description={description}
+  className="bg-foregroundColor"
+>
+  <BackLink />
+  <article class="detail">
+    <header class="detail__intro">
+      <!-- <Image
           class="detail__img"
-          widths={[800, 1500]}
+          width={1000}
+          height={1000}
           loading="eager"
+          decoding="sync"
           src={heroImage}
           alt={title}
-        />
-        <!-- <Image
+        /> -->
+      <Image
+        class="detail__img"
+        widths={[800, 1500]}
+        loading="eager"
+        decoding="sync"
+        src={heroImage}
+        alt={title}
+      />
+      <!-- <Image
           class="detail__img"
           width="1500"
           transition:name={`image-${id}`}
@@ -36,7 +46,7 @@ const description =
           alt={title}
           loading="eager"
         /> -->
-        <!-- <img
+      <!-- <img
           class="detail__img"
           src={heroImage}
           width="1000"
@@ -44,7 +54,7 @@ const description =
           transition:name="detail-image"
           alt={title}
         /> -->
-        <!-- <img
+      <!-- <img
           class="detail__img"
           src={heroImage}
           width="1000"
@@ -53,25 +63,23 @@ const description =
           alt={title}
         /> -->
 
-        <div class="detail__header" transition:name="detail-header">
-          <h1 class="detail__title">{title}</h1>
-          <p class="detail__desc">
-            {authorsJoined}
-          </p>
-        </div>
-      </header>
-      <div class="detail__body">
-        <div class="flow max-width-m">
-          <slot />
-        </div>
-        <dl>
-          <dt>Year</dt>
-          <dd>{year}</dd>
-          <dt>Company</dt>
-          <dd>{company}</dd>
-        </dl>
+      <div class="detail__header" transition:name="detail-header">
+        <h1 class="detail__title font-size-l">{title}</h1>
+        <p class="detail__desc font-size-l">
+          {authorsJoined}
+        </p>
       </div>
-    </article>
-    <Footer />
-  </div>
+    </header>
+    <div class="detail__body">
+      <div class="flow max-width-m">
+        <slot />
+      </div>
+      <dl>
+        <dt>Year</dt>
+        <dd>{year}</dd>
+        <dt>Company</dt>
+        <dd>{company}</dd>
+      </dl>
+    </div>
+  </article>
 </BaseLayout>
