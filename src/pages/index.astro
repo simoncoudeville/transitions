@@ -22,33 +22,35 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Tags tags={tags} currentPath={currentPath} amount={amountOfPosts} />
-  <div class="intro">
-    <p class="intro__text font-size-l">
-      <!-- Between 1955 and 1995, Dieter Rams designed his most iconic products for Braun and Vitsœ.  -->
+  <main class="main">
+    <div class="intro">
+      <p class="intro__text font-size-l">
+        <!-- Between 1955 and 1995, Dieter Rams designed his most iconic products for Braun and Vitsœ.  -->
 
-       Few is a curation of essential products, handpicked for their exceptional
-      performance and design. In a world of excess, we curate essentials because
-      we believe having fewer but better things makes life better.
+         Few is a curation of essential products, handpicked for their exceptional
+        performance and design. In a world of excess, we curate essentials because
+        we believe having fewer but better things makes life better.
 
-      <!-- This site is a demo of how to animate navigation between multiple pages
+        <!-- This site is a demo of how to animate navigation between multiple pages
       using View Transitions in Astro. Few is a curation of essential products,
       handpicked for their exceptional performance and design. In a world of
       excess, we curate essentials because we believe having fewer but better
       things makes life better. -->
-    </p>
-  </div>
-  <main class="items">
-    {
-      posts.map((post) => (
-        <Article
-          size={post.data.size}
-          slug={post.slug}
-          image={post.data.heroImage}
-          title={post.data.title}
-          authors={post.data.authors}
-          year={post.data.year}
-        />
-      ))
-    }
+      </p>
+    </div>
+    <div class="items">
+      {
+        posts.map((post) => (
+          <Article
+            size={post.data.size}
+            slug={post.slug}
+            image={post.data.heroImage}
+            title={post.data.title}
+            authors={post.data.authors}
+            year={post.data.year}
+          />
+        ))
+      }
+    </div>
   </main>
 </BaseLayout>

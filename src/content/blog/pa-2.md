@@ -4,6 +4,8 @@ year: 1956
 authors: ["Dieter Rams"]
 company: Braun AG
 heroImage: "./pa-2.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["projectors"]
 pubDate: "Oct 17 2023"
 # heroImage: "/img/unit-4.webp"

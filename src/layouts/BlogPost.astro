@@ -6,7 +6,8 @@ import type { CollectionEntry } from "astro:content";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, year, heroImage, authors, company } = Astro.props;
+const { title, year, heroImage, authors, company, credit, creditLink } =
+  Astro.props;
 const id = title.toLowerCase().replace(/\s/g, "-");
 const authorsJoined = authors.join(", ");
 const description =
@@ -32,7 +33,7 @@ const description =
         /> -->
       <Image
         class="detail__img"
-        widths={[800, 1500]}
+        widths={[800, 1300]}
         loading="eager"
         decoding="sync"
         src={heroImage}
@@ -74,12 +75,26 @@ const description =
       <div class="flow max-width-m">
         <slot />
       </div>
-      <dl>
-        <dt>Year</dt>
-        <dd>{year}</dd>
-        <dt>Company</dt>
-        <dd>{company}</dd>
-      </dl>
+      <div class="flow">
+        <dl>
+          <dt>Year</dt>
+          <dd>{year}</dd>
+          <dt>Company</dt>
+          <dd>{company}</dd>
+          <dt>Image credit</dt>
+          <dd>
+            <a href={creditLink} target="_blank" rel="noopener noreferrer">
+              {credit}
+            </a>
+          </dd>
+        </dl>
+        <!-- <p class="color-meta">
+          Image courtesy of
+          <a href={creditLink} target="_blank" rel="noopener noreferrer">
+            {credit}
+          </a>
+        </p> -->
+      </div>
     </div>
   </article>
 </BaseLayout>

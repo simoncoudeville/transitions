@@ -4,9 +4,10 @@ year: 1965
 authors: ["Robert Oberheim", "Reinhold Weiss"]
 company: Braun AG
 heroImage: "./mpz-1.jpg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["kitchen"]
 pubDate: "Oct 17 2023"
-# heroImage: "/img/unit-4.webp"
 size: 4
 ---
 

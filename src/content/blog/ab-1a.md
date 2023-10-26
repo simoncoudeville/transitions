@@ -4,6 +4,8 @@ year: 1971
 authors: ["Dieter Rams", "Dietrich Lubs"]
 company: Braun AG
 heroImage: "./ab-1a.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["clocks"]
 pubDate: "Oct 17 2023"
 # heroImage: "/img/unit-4.webp"

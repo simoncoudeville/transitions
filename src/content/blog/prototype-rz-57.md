@@ -4,6 +4,8 @@ year: 1957
 authors: ["Dieter Rams"]
 company: Otto Zapf
 heroImage: "./prototype-rz-57.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["furniture"]
 pubDate: "Oct 17 2023"
 # heroImage: "/img/unit-4.webp"

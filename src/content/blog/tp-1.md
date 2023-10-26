@@ -4,6 +4,8 @@ year: 1959
 authors: ["Dieter Rams"]
 company: Braun AG
 heroImage: "./tp-1.png"
+credit: "braun-audio.com"
+creditLink: "https://www.braun-audio.com"
 tags: ["audio"]
 pubDate: "Oct 17 2023"
 # heroImage: "/img/unit-4.webp"

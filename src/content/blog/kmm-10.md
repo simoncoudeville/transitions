@@ -4,6 +4,8 @@ year: 1975
 authors: ["Reinhold Weiss", "Hartwig Kahlcke"]
 company: Braun AG
 heroImage: "./kmm-10.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["kitchen"]
 pubDate: "Oct 17 2023"
 # heroImage: "/img/unit-4.webp"

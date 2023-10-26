@@ -28,6 +28,18 @@
 	}
 }
 
+@keyframes slide-from-right {
+	from {
+		transform: translateX(1rem);
+	}
+}
+
+@keyframes slide-to-right {
+	to {
+		transform: translateX(1rem);
+	}
+}
+
 @keyframes slide-from-top {
 	from {
 		transform: translateY(-1rem);
@@ -142,7 +154,7 @@
 
 	--global-animation-duration: 300ms;
 	--global-animation-duration-fast: 150ms;
-	--global-animation-duration-x-fast: 125ms;
+	--global-animation-duration-x-fast: 150ms;
 	--global-animation-duration-xx-fast: 100ms;
 
 	/* whitespace */
@@ -158,12 +170,22 @@
 	--global-space-xxxl: 6rem;
 
 	--global-grid-item-padding: var(--global-space-m);
-	--global-grid-padding: var(--global-space-m);
+	--global-grid-padding: var(--global-space-s);
 	--global-page-padding: var(--global-grid-padding);
 
 	@media (--small-viewport) {
 		--global-page-padding: calc(var(--global-grid-padding) + var(--global-grid-item-padding));
 	}
+}
+
+::view-transition-old(root) {
+	animation: var(--global-animation-duration-xx-fast) cubic-bezier(0.4, 0, 1, 1) both fade-out,
+		var(--global-animation-duration) cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(root) {
+	animation: var(--global-animation-duration-fast) cubic-bezier(0, 0, 0.2, 1) var(--global-animation-duration-xx-fast) both fade-in,
+		var(--global-animation-duration) cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
 /*
@@ -212,7 +234,7 @@ a {
 
 dl {
 	display: grid;
-	grid-template-columns: min-content 1fr;
+	grid-template-columns: max-content 1fr;
 	gap: 0 var(--global-space-m);
 }
 
@@ -231,7 +253,7 @@ dt {
 }
 
 .flow>*+* {
-	margin-top: var(--global-space-s);
+	margin-top: var(--global-space-m);
 }
 
 .items {
@@ -280,7 +302,7 @@ dt {
 	display: grid;
 	/* padding: var(--global-space-m) var(--global-space-m) var(--global-space-xl); */
 	padding: var(--global-grid-item-padding) var(--global-grid-item-padding) calc(var(--global-grid-item-padding) *2);
-	transition: var(--global-animation-duration-fast) var(--global-easeInOut);
+	transition: var(--global-animation-duration-x-fast) var(--global-easeInOut);
 
 	&:hover {
 		background-color: var(--global-foregroundColor-hover);
@@ -321,7 +343,7 @@ dt {
 	aspect-ratio: 1 / 1;
 	object-fit: contain;
 	max-width: 22.5rem;
-	transition: var(--global-animation-duration-fast) var(--global-easeInOut);
+	transition: var(--global-animation-duration-x-fast) var(--global-easeInOut);
 	z-index: 100;
 	mix-blend-mode: darken;
 
@@ -345,13 +367,13 @@ dt {
 
 
 ::view-transition-new(detail-header) {
-	animation: var(--global-animation-duration-fast) linear var(--global-animation-duration) both fade-in,
-		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration) both slide-from-bottom;
+	animation: var(--global-animation-duration-x-fast) linear var(--global-animation-duration) both fade-in,
+		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration) both slide-from-bottom;
 }
 
 ::view-transition-old(detail-header) {
-	animation: var(--global-animation-duration-fast) linear both fade-out,
-		var(--global-animation-duration-fast) var(--global-easeIn) both slide-to-bottom;
+	animation: var(--global-animation-duration-x-fast) linear both fade-out,
+		var(--global-animation-duration-x-fast) var(--global-easeIn) both slide-to-bottom;
 }
 
 .detail__desc {
@@ -361,7 +383,7 @@ dt {
 .detail__body {
 	padding: 0 var(--global-page-padding) var(--global-page-padding);
 	display: grid;
-	gap: var(--global-space-s);
+	gap: var(--global-space-m);
 	/* auto responsive columns */
 	grid-template-columns: repeat(auto-fill, minmax(min(26rem, 100%), 1fr));
 	align-items: start;
@@ -410,13 +432,13 @@ dt {
 
 
 ::view-transition-new(detail-image) {
-	animation: var(--global-animation-duration-fast) linear var(--global-animation-duration-fast) both fade-in,
-		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration-fast) both grow-from-center;
+	animation: var(--global-animation-duration-x-fast) linear var(--global-animation-duration-x-fast) both fade-in,
+		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration-x-fast) both grow-from-center;
 }
 
 ::view-transition-old(detail-image) {
-	animation: var(--global-animation-duration-fast) linear both fade-out,
-		var(--global-animation-duration-fast) var(--global-easeIn) both shrink-to-center;
+	animation: var(--global-animation-duration-x-fast) linear both fade-out,
+		var(--global-animation-duration-x-fast) var(--global-easeIn) both shrink-to-center;
 }
 
 .header {
@@ -474,7 +496,7 @@ dt {
 	border-radius: var(--global-borderRadius);
 	color: var(--global-meta-color);
 	text-transform: capitalize;
-	transition: all var(--global-animation-duration-fast) var(--global-easeInOut);
+	transition: all var(--global-animation-duration-x-fast) var(--global-easeInOut);
 }
 
 .tags__link:hover,
@@ -489,13 +511,13 @@ dt {
 }
 
 ::view-transition-new(header):only-child {
-	animation: var(--global-animation-duration-fast) linear var(--global-animation-duration-fast) both fade-in,
-		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration-fast) both slide-from-top;
+	animation: var(--global-animation-duration-x-fast) linear var(--global-animation-duration-x-fast) both fade-in,
+		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration-x-fast) both slide-from-top;
 }
 
 ::view-transition-old(header):only-child {
-	animation: var(--global-animation-duration-fast) linear both fade-out,
-		var(--global-animation-duration-fast) var(--global-easeIn) both slide-to-top;
+	animation: var(--global-animation-duration-x-fast) linear both fade-out,
+		var(--global-animation-duration-x-fast) var(--global-easeIn) both slide-to-top;
 }
 
 .intro {
@@ -514,8 +536,12 @@ dt {
 .back {
 	position: fixed;
 	/* position: absolute; */
-	top: var(--global-space-m);
-	left: var(--global-space-m);
+	/* top: var(--global-space-m);
+	left: var(--global-space-m); */
+	/* top: calc(var(--global-page-padding) / 2);
+	left: calc(var(--global-page-padding) / 2); */
+	top: var(--global-page-padding);
+	left: var(--global-page-padding);
 	z-index: 10;
 	display: flex;
 	align-items: center;
@@ -523,8 +549,8 @@ dt {
 	color: var(--global-text-color);
 	border-radius: 100%;
 	view-transition-name: back;
-	background-color: var(--global-backgroundColor);
-	padding: var(--global-space-xs);
+	/* background-color: var(--global-backgroundColor); */
+	/* padding: var(--global-space-xs); */
 
 	& svg {
 		fill: currentColor;
@@ -535,13 +561,13 @@ dt {
 }
 
 ::view-transition-new(back):only-child {
-	animation: var(--global-animation-duration-fast) linear var(--global-animation-duration) both fade-in,
-		var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration) both slide-from-left;
+	animation: var(--global-animation-duration-x-fast) linear var(--global-animation-duration) both fade-in,
+		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration) both slide-from-left;
 }
 
 ::view-transition-old(back):only-child {
-	animation: var(--global-animation-duration-fast) linear both fade-out,
-		var(--global-animation-duration-fast) var(--global-easeIn) both slide-to-left;
+	animation: var(--global-animation-duration-x-fast) linear both fade-out,
+		var(--global-animation-duration-x-fast) var(--global-easeIn) both slide-to-left;
 }
 
 .footer {

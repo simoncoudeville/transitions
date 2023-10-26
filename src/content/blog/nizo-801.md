@@ -4,6 +4,8 @@ year: 1975
 authors: ["Robert Oberheim"]
 company: Braun AG
 heroImage: "./nizo-801.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["Video"]
 pubDate: "Oct 17 2023"
 # heroImage: "/img/unit-4.webp"

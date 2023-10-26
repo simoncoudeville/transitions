@@ -4,6 +4,8 @@ year: 1974
 authors: ["Dieter Rams"]
 company: Vitsœ
 heroImage: "./740-stool.jpg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["furniture"]
 pubDate: "Oct 17 2023"
 # heroImage: "/img/unit-4.webp"

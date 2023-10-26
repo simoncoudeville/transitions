@@ -3,7 +3,9 @@ title: "CSV 13 amplifier"
 year: 1961
 authors: ["Dieter Rams"]
 company: Braun AG
-heroImage: "./ce-16.jpeg"
+heroImage: "./csv-13.jpg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["audio"]
 pubDate: "Oct 17 2023"
 # heroImage: "/img/unit-4.webp"

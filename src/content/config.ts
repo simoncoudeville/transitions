@@ -12,8 +12,10 @@ const blog = defineCollection({
 		tags: z.array(z.string()),
 		updatedDate: z.coerce.date().optional(),
 		company: z.string(),
+		credit: z.string().optional(),
+		creditLink: z.string().optional(),
 		draft: z.boolean().optional(),
-		heroImage: image().refine((img) => img.width >= 1500, {
+		heroImage: image().refine((img) => img.width >= 1300, {
 			message: "Cover image must be at least 1500 pixels wide!",
 		}),
 		// heroImage: z.string(),

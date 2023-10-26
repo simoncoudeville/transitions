@@ -46,24 +46,26 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Tags tags={tags} currentPath={currentPath} amount={amount} />
-  <div class="intro">
-    <p class="font-size-l">
-      <!-- <span class="font-weight-bold">{amount}</span> products tagged with{" "} -->
-      <span class="font-weight-bold">{tagUppercased}</span>
-    </p>
-  </div>
-  <main class="items">
-    {
-      posts.map((post) => (
-        <Article
-          size={post.data.size}
-          slug={post.slug}
-          image={post.data.heroImage}
-          title={post.data.title}
-          authors={post.data.authors}
-          year={post.data.year}
-        />
-      ))
-    }
+  <main class="main">
+    <div class="intro">
+      <p class="font-size-l">
+        <!-- <span class="font-weight-bold">{amount}</span> products tagged with{" "} -->
+        <span class="font-weight-bold">{tagUppercased}</span>
+      </p>
+    </div>
+    <div class="items">
+      {
+        posts.map((post) => (
+          <Article
+            size={post.data.size}
+            slug={post.slug}
+            image={post.data.heroImage}
+            title={post.data.title}
+            authors={post.data.authors}
+            year={post.data.year}
+          />
+        ))
+      }
+    </div>
   </main>
 </BaseLayout>
