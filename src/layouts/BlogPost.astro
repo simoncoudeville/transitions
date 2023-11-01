@@ -1,63 +1,100 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { Image } from "astro:assets";
-import BaseHead from "../components/BaseHead.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import BackLink from "../components/BackLink.astro";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { postId, title, description, year, heroImage, authors } = Astro.props;
+const { title, year, heroImage, authors, company, credit, creditLink } =
+  Astro.props;
+const id = title.toLowerCase().replace(/\s/g, "-");
+const authorsJoined = authors.join(", ");
+const description =
+  "Designed by" + authorsJoined + "in" + year + "for" + company + ".";
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={title} description={description} />
-  </head>
+<BaseLayout
+  title={title}
+  description={description}
+  className="bg-foregroundColor"
+>
+  <BackLink />
+  <article class="detail">
+    <header class="detail__intro">
+      <!-- <Image
+          class="detail__img"
+          width={1000}
+          height={1000}
+          loading="eager"
+          decoding="sync"
+          src={heroImage}
+          alt={title}
+        /> -->
+      <Image
+        class="detail__img"
+        widths={[800, 1300]}
+        loading="eager"
+        decoding="sync"
+        src={heroImage}
+        alt={title}
+      />
+      <!-- <Image
+          class="detail__img"
+          width="1500"
+          transition:name={`image-${id}`}
+          src={heroImage}
+          alt={title}
+          loading="eager"
+        /> -->
+      <!-- <img
+          class="detail__img"
+          src={heroImage}
+          width="1000"
+          height="1000"
+          transition:name="detail-image"
+          alt={title}
+        /> -->
+      <!-- <img
+          class="detail__img"
+          src={heroImage}
+          width="1000"
+          height="1000"
+          transition:name={`image-${id}`}
+          alt={title}
+        /> -->
 
-  <body>
-    <main class="bg-color-neutral-075">
-      <BackLink />
-      <article class="detail">
-        <header class="detail__intro">
-          <!-- <Image
-            class="detail__img"
-            width="1000"
-            transition:name={`detail-image`}
-            src={heroImage}
-            alt={title}
-          /> -->
-          <Image
-            class="detail__img"
-            width="1000"
-            transition:name={`image-${postId}`}
-            src={heroImage}
-            alt={title}
-          />
-          <div class="detail__header" transition:name="detail-header">
-            <h1 class="detail__title">{title}</h1>
-            <p class="detail__desc">
-              {authors}
-            </p>
-          </div>
-        </header>
-        <div class="detail__body">
-          <div class="flow max-width-m">
-            <slot />
-          </div>
-          <dl>
-            <dt>Company</dt>
-            <dd>Braun AG</dd>
-            <dt>Country</dt>
-            <dd>Germany</dd>
-            <dt>Year</dt>
-            <dd>{year}</dd>
-            <dt>Materials</dt>
-            <dd>plastic, vinyl</dd>
-            <dt>Dimensions</dt>
-            <dd>5 h × 7 w × 2¼ d in (13 × 18 × 6 cm)</dd>
-          </dl>
-        </div>
-      </article>
-    </main>
-  </body>
-</html>
+      <div class="detail__header">
+        <h1 class="detail__title font-size-l">{title}</h1>
+        <p class="detail__desc font-size-l">
+          {authorsJoined}
+        </p>
+      </div>
+    </header>
+    <div class="detail__body">
+      <div class="flow max-width-m">
+        <slot />
+      </div>
+      <div class="flow">
+        <dl>
+          <dt>Year</dt>
+          <dd>{year}</dd>
+          <dt>Company</dt>
+          <dd>{company}</dd>
+          <dt>Image credit</dt>
+          <dd>
+            <a href={creditLink} target="_blank" rel="noopener noreferrer">
+              {credit}
+            </a>
+          </dd>
+        </dl>
+        <!-- <p class="color-meta">
+          Image courtesy of
+          <a href={creditLink} target="_blank" rel="noopener noreferrer">
+            {credit}
+          </a>
+        </p> -->
+      </div>
+    </div>
+  </article>
+</BaseLayout>

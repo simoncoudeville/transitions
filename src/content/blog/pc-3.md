@@ -1,13 +1,15 @@
 ---
-postId: "pc-3"
 title: "PC 3 SV turntable"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-pubDate: "Jul 01 2022"
 year: 1956
-heroImage: "./pc-3-l.jpeg"
-authors: Wilhelm Wagenfeld, Dieter Rams and Gerd Alfred Müller
+authors: ["Wilhelm Wagenfeld", "Dieter Rams", "Gerd Alfred Müller"]
+company: Braun AG
+heroImage: "./pc-3.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["audio"]
-size: 6
+pubDate: "Oct 17 2023"
+# heroImage: "/img/unit-4.webp"
+size: 4
 ---
 
-Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
+The Braun PC 3 SV turntable, a product from Braun's history of sleek and functional designs, offers a minimalist and elegant turntable experience. Its design combines form and function, showcasing a clean, uncluttered appearance. The turntable is engineered for high-quality audio performance and precision, reflecting Braun's commitment to delivering outstanding sound. As a design classic, the PC 3 SV turntable is a sought-after collector's item and frequently featured in design exhibitions, illustrating its timeless design appeal.

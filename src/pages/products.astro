@@ -1,0 +1,39 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Tags from "../components/Header.astro";
+import Article from "../components/Article.astro";
+
+import { getCollection } from "astro:content";
+
+const posts = (
+  await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
+  })
+).sort((a, b) => a.data.year.valueOf() - b.data.year.valueOf());
+
+const amountOfPosts = posts.length;
+
+const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <Tags tags={tags} currentPath={currentPath} amount={amountOfPosts} />
+  <main class="items">
+    {
+      posts.map((post) => (
+        <Article
+          size={post.data.size}
+          slug={post.slug}
+          image={post.data.heroImage}
+          title={post.data.title}
+          authors={post.data.authors}
+          year={post.data.year}
+        />
+      ))
+    }
+  </main>
+</BaseLayout>

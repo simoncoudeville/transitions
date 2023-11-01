@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+const { year, slug, title, image, authors } = Astro.props;
+// make an id for each item based on the title
+const id = title.toLowerCase().replace(/\s/g, "-");
+const authorsJoined = authors.join(" & ");
+---
+
+<article class={`item`}>
+  <a class="item__link" href={`/${slug}/`} rel="prefetch">
+    <p class="item__year">
+      {year}
+    </p>
+    <!-- <Image
+      class="item__img"
+      width="800"
+      height="800"
+      src={image}
+      alt={title}
+      transition:name={`image-${id}`}
+    /> -->
+    <Image class="item__img" width="800" height="800" src={image} alt={title} />
+    <!-- <Image class="item__img" width="1000" height="1000" src={image} alt={title} /> -->
+    <!-- <img class="item__img" width="600" height="600" src={image} alt={title} /> -->
+    <header class="item__header">
+      <h2 class="item__title">{title}</h2>
+      <p class="item__desc">{authorsJoined}</p>
+    </header>
+  </a>
+</article>
+
+<script>
+  import { navigate } from "astro:transitions/client";
+
+  // // get all the item__links
+  const handleArticleClick = () => {
+    let items = document.querySelectorAll(".item__link");
+
+    // loop through each item__link
+    items.forEach((item) => {
+      // add a click event listener to each item__link inside item
+      item.addEventListener("click", (e) => {
+        // prevent the default link behavior
+        e.preventDefault();
+        const href = e.currentTarget.href;
+        // preload the page that the href points to
+        // fetch(href, { method: "GET", headers: { "astro-preload": "" } });
+
+        navigate(href);
+
+        // fetch(href, { method: "GET" }).then(() => {
+        //   console.log("done");
+        //   navigate(href);
+        // });
+
+        // wait for the page that the href points to to load and then navigate to it
+      });
+    });
+  };
+
+  document.addEventListener("astro:page-load", () => {
+    // handleArticleClick();
+  });
+</script>

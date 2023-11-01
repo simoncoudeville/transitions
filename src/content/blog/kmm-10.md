@@ -1,13 +1,15 @@
 ---
-postId: "kmm-10"
 title: "KMM 10 coffee grinder"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Jul 08 2022"
 year: 1975
-heroImage: "./kmm-10-l.jpeg"
-authors: Reinhold Weiss and Hartwig Kahlcke
+authors: ["Reinhold Weiss", "Hartwig Kahlcke"]
+company: Braun AG
+heroImage: "./kmm-10.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["kitchen"]
-size: 6
+pubDate: "Oct 17 2023"
+# heroImage: "/img/unit-4.webp"
+size: 4
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+The KMM 10 coffee grinder, crafted by Braun, is a classic piece of kitchen equipment known for its functionality and elegant design. Its minimalist, cylindrical form with a focus on user-friendliness captures the essence of Braun's design philosophy. The KMM 10 coffee grinder provides coffee enthusiasts with the ability to grind their beans to the perfect consistency, ensuring a fresh and flavorful cup of coffee. Its timeless design continues to be appreciated by those who value both aesthetics and practicality in their kitchen appliances. The KMM 10 coffee grinder is a testament to Braun's commitment to exceptional design and performance in everyday items.

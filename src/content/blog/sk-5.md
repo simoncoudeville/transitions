@@ -1,13 +1,15 @@
 ---
-postId: "sk-5"
 title: "SK 5 Phonosuper radiogram"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Jul 08 2022"
 year: 1958
-heroImage: "./sk-5-l.jpeg"
-authors: Dieter Rams and Hans Gugelot
-size: 3
+authors: ["Dieter Rams", "Hans Gugelot"]
+company: Braun AG
+heroImage: "./sk-5.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["audio"]
+pubDate: "Oct 17 2023"
+# heroImage: "/img/unit-4.webp"
+size: 4
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+The Braun SK 5 Phonosuper radiogram is a remarkable example of mid-century industrial design. This multifunctional piece combines a radio and record player within a sleek and minimalist wooden housing. The SK 5's elegant form and clean lines are emblematic of Rams' design principles, making it a design classic. Its blend of form and function exemplifies the Bauhaus-inspired design ethos, which influenced a generation of designers. The Braun SK 5 Phonosuper radiogram is celebrated for its timeless aesthetic and enduring appeal in the world of design and audio equipment.

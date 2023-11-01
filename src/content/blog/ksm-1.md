@@ -1,13 +1,14 @@
 ---
-postId: "ksm-1"
 title: "KSM 1 coffee mill"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Jul 08 2022"
-year: 1958
-heroImage: "./ksm-1-l.jpeg"
-authors: Reinhold Weiss
+year: 1967
+authors: ["Reinhold Weiss"]
+company: Braun AG
+heroImage: "./ksm-1.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["kitchen"]
-size: 3
+pubDate: "Oct 17 2023"
+size: 4
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+A notable piece of kitchen equipment with a distinctive design. Created in the mid-20th century, it features a minimalist and functional aesthetic, aligning with the design principles of that era. The KSM 1 coffee mill is designed for precision coffee grinding and embodies both form and function. Its timeless design has made it a sought-after collector's item, reflecting its enduring appeal and contribution to the field of industrial design.

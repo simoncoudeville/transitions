@@ -1,13 +1,15 @@
 ---
-postId: "ab-1a"
 title: "AB 1A alarm clock"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Jul 08 2022"
 year: 1971
-heroImage: "./ab-1a-l.jpeg"
-authors: Dieter Rams and Dietrich Lubs
+authors: ["Dieter Rams", "Dietrich Lubs"]
+company: Braun AG
+heroImage: "./ab-1a.jpeg"
+credit: "wright20.com"
+creditLink: "https://wright20.com/"
 tags: ["clocks"]
-size: 3
+pubDate: "Oct 17 2023"
+# heroImage: "/img/unit-4.webp"
+size: 4
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+The AB 1A alarm clock, designed by Braun in the 1980s, is an emblem of functional and aesthetic design. Its simple, rectangular form with a clear digital display reflects Braun's minimalist design ethos. The AB 1A is celebrated for its user-friendly interface, offering easy-to-set alarms and a snooze function for a hassle-free wake-up experience. This classic alarm clock has a timeless appeal, making it a popular choice among those who appreciate both form and function in their everyday objects. The AB 1A alarm clock is a fine example of Braun's dedication to design excellence in everyday items.

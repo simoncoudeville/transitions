@@ -1,14 +1,16 @@
 ---
-import { Image } from "astro:assets";
-import BaseHead from "../components/BaseHead.astro";
-import Tags from "../components/tags.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Article from "../components/Article.astro";
 
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.year.valueOf() - b.data.year.valueOf()
-);
+const posts = (
+  await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
+  })
+).sort((a, b) => a.data.year.valueOf() - b.data.year.valueOf());
 
 const amountOfPosts = posts.length;
 
@@ -18,53 +20,37 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Tags tags={tags} currentPath={currentPath} amount={amountOfPosts} />
-    <main class="items">
-      <!-- {
-        posts.map((post) => (
-          // create an id based on the post's title
-          <article class={`item u-x-span-${post.data.size}-bp3`}>
-            <a class="item__link" href={`/${post.slug}/`}>
-              <Image
-                class="item__img"
-                width="600"
-                height="600"
-                src={post.data.heroImage}
-                alt={post.data.title}
-              />
-              <h2 class="item__title">{post.data.title}</h2>
-              <p class="item__year">{post.data.year}</p>
-              <p class="item__desc">{post.data.authors}</p>
-            </a>
-          </article>
-        ))
-      } -->
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <Header tags={tags} currentPath={currentPath} amount={amountOfPosts} />
+  <main class="main">
+    <div class="intro">
+      <p class="intro__text font-size-l">
+        <!-- Between 1955 and 1995, Dieter Rams designed his most iconic products for Braun and Vitsœ.  -->
+
+         Few is a curation of essential products, handpicked for their exceptional
+        performance and design. In a world of excess, we curate essentials because
+        we believe having fewer but better things makes life better.
+
+        <!-- This site is a demo of how to animate navigation between multiple pages
+      using View Transitions in Astro. Few is a curation of essential products,
+      handpicked for their exceptional performance and design. In a world of
+      excess, we curate essentials because we believe having fewer but better
+      things makes life better. -->
+      </p>
+    </div>
+    <div class="items">
       {
         posts.map((post) => (
-          // create an id based on the post's title
-          <article class={`item u-x-span-${post.data.size}-bp3`}>
-            <a class="item__link" href={`/${post.slug}/`}>
-              <Image
-                class="item__img"
-                width="600"
-                height="600"
-                src={post.data.heroImage}
-                alt={post.data.title}
-                transition:name={`image-${post.data.postId}`}
-              />
-              <h2 class="item__title">{post.data.title}</h2>
-              <p class="item__year">{post.data.year}</p>
-              <p class="item__desc">{post.data.authors}</p>
-            </a>
-          </article>
+          <Article
+            size={post.data.size}
+            slug={post.slug}
+            image={post.data.heroImage}
+            title={post.data.title}
+            authors={post.data.authors}
+            year={post.data.year}
+          />
         ))
       }
-    </main>
-  </body>
-</html>
+    </div>
+  </main>
+</BaseLayout>
