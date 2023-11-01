@@ -617,6 +617,10 @@ dt {
 	right: var(--global-page-padding);
 }
 
+::view-transition-group(mobile-nav) {
+	animation-duration: var(--global-animation-duration);
+}
+
 .intro {
 	padding: var(--global-page-padding) var(--global-page-padding) calc(var(--global-page-padding) + var(--global-space-m));
 }
