@@ -1,0 +1,91 @@
+---
+import Nav from "./Nav.astro";
+const { tags, currentPath, amount } = Astro.props;
+---
+
+<header class="header">
+  <h1 class="header__logo font-size-base"><a href="./">Rams</a></h1>
+  <div class="header__nav">
+    <Nav tags={tags} currentPath={currentPath} />
+  </div>
+  <button class="header__nav-button button-reset js-toggle-nav-button">
+    <svg
+      class="icon icon--menu"
+      aria-labelledby="menu-title"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 256 256"
+    >
+      <title id="menu-title">Menu</title>
+      <rect width="256" height="256" fill="none"></rect>
+      <line
+        x1="40"
+        y1="128"
+        x2="216"
+        y2="128"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="12"></line>
+      <line
+        x1="40"
+        y1="64"
+        x2="216"
+        y2="64"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="12"></line>
+      <line
+        x1="40"
+        y1="192"
+        x2="216"
+        y2="192"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="12"></line>
+    </svg>
+  </button>
+  <p class="header__amount color-meta">
+    {amount} products
+  </p>
+</header>
+
+<script>
+  // show mobile-nav on mobile when clicking all the js-toggle-nav-button elements
+  document.addEventListener("astro:page-load", () => {
+    let toggleNavButtons = document.querySelectorAll(".js-toggle-nav-button");
+    toggleNavButtons.forEach((toggleNavButton) => {
+      toggleNavButton.addEventListener("click", () => {
+        document.body.classList.toggle("show-mobile-nav");
+      });
+    });
+  });
+</script>
+
+{
+  /*
+<script>
+  const handleTagLink = () => {
+    let itemImages = document.querySelectorAll(".item__img");
+    itemImages.forEach((itemImage) => {
+      itemImage.style.setProperty("view-transition-name", "none");
+      // remove the data-astro-transition-scope attribute
+      itemImage.removeAttribute("data-astro-transition-scope");
+      // remove the view-transition-name style
+    });
+  };
+
+  document.addEventListener("astro:page-load", () => {
+    let tagLinks = document.querySelectorAll(".tags__link");
+    // handleTagLink();
+    tagLinks.forEach((tagLink) => {
+      tagLink.addEventListener("click", handleTagLink);
+    });
+  });
+</script>
+*/
+}

@@ -1,3 +1,5 @@
+@import "open-props/easings";
+
 @font-face {
 	font-family: "Graphik Web";
 	src: url("/fonts/Graphik-Light-Web.woff2") format("woff2");
@@ -76,7 +78,7 @@
 	}
 }
 
-@custom-media --small-viewport (min-width: 48em);
+@custom-media --small-viewport (min-width: 58em);
 @custom-media --medium-viewport (min-width: 75em);
 @custom-media --large-viewport (min-width: calc(1500/16 * 1em));
 
@@ -148,12 +150,17 @@
 	--global-easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
 	--global-easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-	--global-easeOut: var(--global-easeOutQuad);
+	/* --global-easeOut: var(--global-easeOutQuad);
 	--global-easeIn: var(--global-easeInQuad);
-	--global-easeInOut: var(--global-easeInOutQuad);
+	--global-easeInOut: var(--global-easeInOutQuad); */
+
+	--global-ease: var(--ease-3);
+	--global-easeOut: var(--ease-out-3);
+	--global-easeIn: var(--ease-in-3);
+	--global-easeInOut: var(--ease-in-out-3);
 
 	--global-animation-duration: 300ms;
-	--global-animation-duration-fast: 150ms;
+	--global-animation-duration-fast: 200ms;
 	--global-animation-duration-x-fast: 150ms;
 	--global-animation-duration-xx-fast: 100ms;
 
@@ -179,14 +186,24 @@
 }
 
 ::view-transition-old(root) {
-	animation: var(--global-animation-duration-xx-fast) cubic-bezier(0.4, 0, 1, 1) both fade-out,
-		var(--global-animation-duration) cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+	animation: var(--global-animation-duration-x-fast) var(--global-easeIn) both fade-out,
+		var(--global-animation-duration) var(--global-ease) both slide-to-bottom;
 }
 
 ::view-transition-new(root) {
-	animation: var(--global-animation-duration-fast) cubic-bezier(0, 0, 0.2, 1) var(--global-animation-duration-xx-fast) both fade-in,
-		var(--global-animation-duration) cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+	animation: var(--global-animation-duration) var(--global-easeOut) var(--global-animation-duration-x-fast) both fade-in,
+		var(--global-animation-duration) var(--global-ease) both slide-from-bottom;
 }
+
+/* ::view-transition-old(root) {
+	animation: var(--global-animation-duration-xx-fast) linear both fade-out,
+		var(--global-animation-duration) var(--global-easeIn) both slide-to-bottom;
+}
+
+::view-transition-new(root) {
+	animation: var(--global-animation-duration-fast) linear var(--global-animation-duration-xx-fast) both fade-in,
+		var(--global-animation-duration) var(--global-easeOut) both slide-from-bottom;
+} */
 
 /*
 ::view-transition-old(root) {
@@ -214,7 +231,9 @@ html {
 	box-sizing: border-box;
 }
 
-img {
+img,
+svg {
+	display: block;
 	max-width: 100%;
 	height: auto;
 }
@@ -249,12 +268,31 @@ dt {
 }
 
 .button-reset {
-	all: unset;
+	/* all: unset; */
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background-color: transparent;
+	color: inherit;
+	font-size: inherit;
+	font-family: inherit;
+	cursor: pointer;
+	line-height: inherit;
+	appearance: none;
 }
 
 .flow>*+* {
 	margin-top: var(--global-space-m);
 }
+
+.icon {
+	fill: currentColor;
+	width: 1.5rem;
+	aspect-ratio: 1/1;
+	pointer-events: none;
+}
+
 
 .items {
 	position: relative;
@@ -286,6 +324,10 @@ dt {
 	@media (--large-viewport) {
 		grid-column: span 3;
 
+		/* &:nth-child(4n - 3) {
+			grid-column: span 3;
+		} */
+
 		&:nth-child(5n - 4) {
 			grid-column: span 6;
 		}
@@ -302,7 +344,7 @@ dt {
 	display: grid;
 	/* padding: var(--global-space-m) var(--global-space-m) var(--global-space-xl); */
 	padding: var(--global-grid-item-padding) var(--global-grid-item-padding) calc(var(--global-grid-item-padding) *2);
-	transition: var(--global-animation-duration-x-fast) var(--global-easeInOut);
+	transition: all var(--global-animation-duration-x-fast) var(--global-easeInOut);
 
 	&:hover {
 		background-color: var(--global-foregroundColor-hover);
@@ -359,21 +401,21 @@ dt {
 	/* flex-shrink: 0;
 	flex-grow: 100; */
 	padding: var(--global-page-padding) var(--global-page-padding);
+	view-transition-name: detail-header;
 
 	/* @media (--small-viewport) {
 		padding: 0 calc(var(--global-grid-gap) + var(--global-grid-item-padding)) calc(var(--global-grid-gap) + var(--global-grid-item-padding));
 	} */
 }
 
-
 ::view-transition-new(detail-header) {
-	animation: var(--global-animation-duration-x-fast) linear var(--global-animation-duration) both fade-in,
-		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration) both slide-from-bottom;
+	animation: var(--global-animation-duration-xx-fast) var(--global-easeOut) var(--global-animation-duration-xx-fast) both fade-in,
+		var(--global-animation-duration-x-fast) var(--global-ease) var(--global-animation-duration-xx-fast) both slide-from-bottom;
 }
 
 ::view-transition-old(detail-header) {
-	animation: var(--global-animation-duration-x-fast) linear both fade-out,
-		var(--global-animation-duration-x-fast) var(--global-easeIn) both slide-to-bottom;
+	animation: var(--global-animation-duration-xx-fast) var(--global-easeIn) both fade-out,
+		var(--global-animation-duration) var(--global-ease) both slide-to-bottom;
 }
 
 .detail__desc {
@@ -432,13 +474,13 @@ dt {
 
 
 ::view-transition-new(detail-image) {
-	animation: var(--global-animation-duration-x-fast) linear var(--global-animation-duration-x-fast) both fade-in,
-		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration-x-fast) both grow-from-center;
+	animation: var(--global-animation-duration-xx-fast) var(--global-easeOut) var(--global-animation-duration-xx-fast) both fade-in,
+		var(--global-animation-duration-x-fast) var(--global-ease) var(--global-animation-duration-xx-fast) both grow-from-center;
 }
 
 ::view-transition-old(detail-image) {
-	animation: var(--global-animation-duration-x-fast) linear both fade-out,
-		var(--global-animation-duration-x-fast) var(--global-easeIn) both shrink-to-center;
+	animation: var(--global-animation-duration-xx-fast) var(--global-easeIn) both fade-out,
+		var(--global-animation-duration) var(--global-ease) both shrink-to-center;
 }
 
 .header {
@@ -451,8 +493,7 @@ dt {
 	background-color: var(--global-backgroundColor);
 	display: grid;
 	/* grid-template-columns: auto 1fr; */
-	grid-template-columns: 1fr auto 1fr;
-	align-items: center;
+
 	/* padding: var(--global-space-xxxs) calc(var(--global-grid-gap) + var(--global-grid-item-padding) - var(--tag-inline-padding)); */
 	padding: var(--global-space-m) var(--global-page-padding);
 	/* margin-bottom: calc(var(--global-grid-gap) * -1); */
@@ -462,9 +503,15 @@ dt {
 	/* @media (--small-viewport) {
 		padding: 0 calc(var(--global-grid-gap) + var(--global-grid-item-padding));
 	} */
+
+	@media (--small-viewport) {
+		grid-template-columns: 1fr auto 1fr;
+		align-items: center;
+	}
 }
 
 .header__logo {
+	grid-row: 1;
 	/* padding: var(--tag-block-padding) var(--tag-inline-padding); */
 
 	/* @media (--small-viewport) {
@@ -474,6 +521,13 @@ dt {
 
 .header__amount {
 	justify-self: end;
+
+	display: none;
+
+	@media (--small-viewport) {
+		display: block;
+	}
+
 	/* padding: var(--tag-block-padding) var(--tag-inline-padding); */
 
 	/* @media (--small-viewport) {
@@ -481,9 +535,24 @@ dt {
 	} */
 }
 
-.tags__list {
+.header__nav-button {
+	grid-row: 1;
+	justify-self: end;
+
+	@media (--small-viewport) {
+		display: none;
+	}
+}
+
+.header__nav {
 	display: none;
 
+	@media (--small-viewport) {
+		display: block;
+	}
+}
+
+.tags__list {
 	@media (--small-viewport) {
 		display: flex;
 		flex-wrap: wrap;
@@ -504,20 +573,48 @@ dt {
 	color: var(--global-text-color);
 }
 
-.tags__button {
-	@media (--small-viewport) {
-		display: none;
-	}
-}
-
 ::view-transition-new(header):only-child {
-	animation: var(--global-animation-duration-x-fast) linear var(--global-animation-duration-x-fast) both fade-in,
-		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration-x-fast) both slide-from-top;
+	animation: var(--global-animation-duration-xx-fast) var(--global-easeOut) var(--global-animation-duration-x-fast) both fade-in,
+		var(--global-animation-duration-x-fast) var(--global-ease) var(--global-animation-duration-x-fast) both slide-from-top;
 }
 
 ::view-transition-old(header):only-child {
-	animation: var(--global-animation-duration-x-fast) linear both fade-out,
-		var(--global-animation-duration-x-fast) var(--global-easeIn) both slide-to-top;
+	animation: var(--global-animation-duration-xx-fast) var(--global-easeIn) both fade-out,
+		var(--global-animation-duration-x-fast) var(--global-ease) both slide-to-top;
+}
+
+.mobile-nav {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: calc(var(--global-page-padding) * 2);
+	border-left: 1px solid var(--global-borderColor);
+	z-index: 1000;
+	background-color: var(--global-backgroundColor);
+	padding: var(--global-space-m);
+	transform: translateX(calc(100% + 1px));
+	opacity: 0;
+	transition: opacity var(--global-animation-duration-fast) var(--global-easeIn),
+		transform var(--global-animation-duration) var(--global-ease);
+	view-transition-name: mobile-nav;
+
+	@media (--small-viewport) {
+		display: none;
+	}
+
+	.show-mobile-nav & {
+		opacity: 1;
+		transform: translateX(0);
+		transition: opacity var(--global-animation-duration-fast) var(--global-easeOut) var(--global-animation-duration-xx-fast),
+			transform var(--global-animation-duration) var(--global-ease);
+	}
+}
+
+.mobile-nav__close {
+	position: absolute;
+	top: var(--global-space-m);
+	right: var(--global-page-padding);
 }
 
 .intro {
@@ -552,22 +649,22 @@ dt {
 	/* background-color: var(--global-backgroundColor); */
 	/* padding: var(--global-space-xs); */
 
-	& svg {
+	/* & svg {
 		fill: currentColor;
 		width: 1.5rem;
 		aspect-ratio: 1/1;
 		pointer-events: none;
-	}
+	} */
 }
 
-::view-transition-new(back):only-child {
-	animation: var(--global-animation-duration-x-fast) linear var(--global-animation-duration) both fade-in,
-		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration) both slide-from-left;
+::view-transition-new(back) {
+	animation: var(--global-animation-duration-xx-fast) var(--global-easeOut) var(--global-animation-duration-xx-fast) both fade-in,
+		var(--global-animation-duration-x-fast) var(--global-ease) var(--global-animation-duration-xx-fast) both slide-from-left;
 }
 
-::view-transition-old(back):only-child {
-	animation: var(--global-animation-duration-x-fast) linear both fade-out,
-		var(--global-animation-duration-x-fast) var(--global-easeIn) both slide-to-left;
+::view-transition-old(back) {
+	animation: var(--global-animation-duration-xx-fast) var(--global-easeIn) both fade-out,
+		var(--global-animation-duration) var(--global-ease) both slide-to-left;
 }
 
 .footer {
@@ -721,7 +818,8 @@ dt {
 }
 
 .font-size-l {
-	font-size: calc(34/18 * 1rem);
+	/* font-size: calc(34/18 * 1rem); */
+	font-size: clamp(1.3333rem, 1.5625vw + 1.0556rem, 1.8889rem);
 	line-height: 1.2;
 	letter-spacing: -.0125em;
 }

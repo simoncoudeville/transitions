@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
+import MobileNav from "../components/MobileNav.astro";
 const { title, description, className } = Astro.props;
 ---
 
@@ -12,5 +13,6 @@ const { title, description, className } = Astro.props;
   <body>
     <slot />
     <Footer />
+    <MobileNav />
   </body>
 </html>

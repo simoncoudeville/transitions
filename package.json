@@ -15,6 +15,7 @@
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "astro": "^3.3.2",
+    "open-props": "^1.6.10",
     "postcss-custom-media": "^10.0.2"
   }
 }

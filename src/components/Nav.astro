@@ -1,0 +1,34 @@
+---
+const { currentPath, tags } = Astro.props;
+---
+
+<nav class="tags">
+  <ul class="tags__list list-reset">
+    <li class="tags__item">
+      <a
+        class={currentPath === ""
+          ? "tags__link tags__link--active"
+          : "tags__link"}
+        href="./"
+      >
+        all</a
+      >
+    </li>
+    {
+      tags.map((tag) => (
+        <li>
+          <a
+            class={
+              currentPath === tag
+                ? "tags__link tags__link--active"
+                : "tags__link"
+            }
+            href={`/${tag}`}
+          >
+            {tag}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
