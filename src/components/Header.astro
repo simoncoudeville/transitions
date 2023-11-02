@@ -64,6 +64,18 @@ const { tags, currentPath, amount } = Astro.props;
       });
     });
   });
+
+  // Let the header Slide up on scroll down, slide down on scroll up
+  let prevScrollpos = window.pageYOffset;
+  window.onscroll = function () {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.body.classList.remove("hide-header");
+    } else {
+      document.body.classList.add("hide-header");
+    }
+    prevScrollpos = currentScrollPos;
+  };
 </script>
 
 {
