@@ -54,6 +54,18 @@
 	}
 }
 
+@keyframes slide-from-top-full {
+	from {
+		transform: translateY(-1rem);
+	}
+}
+
+@keyframes slide-to-top-full {
+	to {
+		transform: translateY(-1rem);
+	}
+}
+
 @keyframes slide-from-bottom {
 	from {
 		transform: translateY(1rem);
@@ -500,8 +512,8 @@ dt {
 	/* margin-bottom: calc(var(--global-grid-gap) * -1); */
 	z-index: 200;
 
-	transition: opacity var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration-x-fast),
-		transform var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration-x-fast);
+	transition: opacity var(--global-animation-duration-x-fast) var(--global-easeOut),
+		transform var(--global-animation-duration-x-fast) var(--global-easeOut);
 	view-transition-name: header;
 
 	/* @media (--small-viewport) {
@@ -514,6 +526,7 @@ dt {
 	}
 
 	.hide-header & {
+		opacity: 0;
 		transform: translate3d(0, -100%, 0);
 		transition: opacity var(--global-animation-duration-x-fast) var(--global-easeIn),
 			transform var(--global-animation-duration-x-fast) var(--global-easeIn);
@@ -585,12 +598,12 @@ dt {
 
 ::view-transition-new(header):only-child {
 	animation: var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration-x-fast) both fade-in,
-		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration-x-fast) both slide-from-top;
+		var(--global-animation-duration-x-fast) var(--global-easeOut) var(--global-animation-duration-x-fast) both slide-from-top-full;
 }
 
 ::view-transition-old(header):only-child {
 	animation: var(--global-animation-duration-x-fast) var(--global-easeIn) both fade-out,
-		var(--global-animation-duration-x-fast) var(--global-easeIn) both slide-to-top;
+		var(--global-animation-duration-x-fast) var(--global-easeIn) both slide-to-top-full;
 }
 
 .mobile-nav {

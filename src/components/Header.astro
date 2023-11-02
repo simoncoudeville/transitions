@@ -69,12 +69,13 @@ const { tags, currentPath, amount } = Astro.props;
   let prevScrollpos = window.pageYOffset;
   window.onscroll = function () {
     let currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
+    if (prevScrollpos - currentScrollPos >= 50) {
       document.body.classList.remove("hide-header");
-    } else {
+      prevScrollpos = currentScrollPos; // Update prevScrollpos after removing the class
+    } else if (currentScrollPos > prevScrollpos) {
       document.body.classList.add("hide-header");
+      prevScrollpos = currentScrollPos; // Update prevScrollpos after adding the class
     }
-    prevScrollpos = currentScrollPos;
   };
 </script>
 
