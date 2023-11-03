@@ -63,45 +63,23 @@ const { tags, currentPath, amount } = Astro.props;
         document.body.classList.toggle("show-mobile-nav");
       });
     });
+    //Let the header Slide up on scroll down, slide down on scroll up
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+      let currentScrollPos = window.pageYOffset;
+      if (prevScrollpos - currentScrollPos >= 50) {
+        document.body.classList.remove("hide-header");
+        prevScrollpos = currentScrollPos; // Update prevScrollpos after removing the class
+        // else if the user scrolled to the top of the page
+      } else if (currentScrollPos === 0) {
+        document.body.classList.remove("hide-header");
+        prevScrollpos = currentScrollPos; // Update prevScrollpos after removing the class
+      } else if (currentScrollPos > prevScrollpos) {
+        document.body.classList.add("hide-header");
+        prevScrollpos = currentScrollPos; // Update prevScrollpos after adding the class
+      }
+    };
   });
-
-  //Let the header Slide up on scroll down, slide down on scroll up
-  // const header = document.querySelector(".header");
-  // let prevScrollpos = window.pageYOffset;
-  // window.onscroll = function () {
-  //   let currentScrollPos = window.pageYOffset;
-  //   if (prevScrollpos - currentScrollPos >= 50) {
-  //     header.classList.remove("is-hidden");
-  //     prevScrollpos = currentScrollPos; // Update prevScrollpos after removing the class
-  //     // else if the user scrolled to the top of the page
-  //   } else if (currentScrollPos === 0) {
-  //     header.classList.remove("is-hidden");
-  //     prevScrollpos = currentScrollPos; // Update prevScrollpos after removing the class
-  //   } else if (currentScrollPos > prevScrollpos) {
-  //     header.classList.add("is-hidden");
-  //     prevScrollpos = currentScrollPos; // Update prevScrollpos after adding the class
-  //   }
-  // };
-
-  const header = document.querySelector(".header");
-  let prevScrollpos = window.pageYOffset;
-
-  // when the user scrolls down let the sticky header scroll with the page until it is out of view
-  // when the user scrolls up let the sticky header scroll back with the page until it is in view
-  window.onscroll = function () {
-    let currentScrollPos = window.pageYOffset;
-    if (prevScrollpos - currentScrollPos >= 50) {
-      header.classList.remove("is-hidden");
-      prevScrollpos = currentScrollPos; // Update prevScrollpos after removing the class
-      // else if the user scrolled to the top of the page
-    } else if (currentScrollPos === 0) {
-      header.classList.remove("is-hidden");
-      prevScrollpos = currentScrollPos; // Update prevScrollpos after removing the class
-    } else if (currentScrollPos > prevScrollpos) {
-      header.classList.add("is-hidden");
-      prevScrollpos = currentScrollPos; // Update prevScrollpos after adding the class
-    }
-  };
 </script>
 
 {
