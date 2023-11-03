@@ -16,7 +16,7 @@ const { currentPath, tags } = Astro.props;
     </li>
     {
       tags.map((tag) => (
-        <li>
+        <li class="tags__item">
           <a
             class={
               currentPath === tag

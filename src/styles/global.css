@@ -497,8 +497,6 @@ dt {
 }
 
 .header {
-	--tag-inline-padding: var(--global-space-xs);
-	--tag-block-padding: 0;
 	position: sticky;
 	top: 0;
 	right: 0;
@@ -582,13 +580,25 @@ dt {
 	}
 }
 
+.tags__item {
+	.mobile-nav & {
+		&+& {
+			margin-top: var(--global-space-m);
+		}
+	}
+}
+
 .tags__link {
 	display: block;
-	padding: var(--tag-block-padding) var(--tag-inline-padding);
+	padding: 0 var(--global-space-xs);
 	border-radius: var(--global-borderRadius);
 	color: var(--global-meta-color);
 	text-transform: capitalize;
 	transition: all var(--global-animation-duration-x-fast) var(--global-easeInOut);
+
+	.mobile-nav & {
+		padding: 0;
+	}
 }
 
 .tags__link:hover,
