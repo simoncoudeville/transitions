@@ -681,7 +681,8 @@ dt {
 	align-items: center;
 	justify-content: center;
 	color: var(--global-text-color);
-	border-radius: 100%;
+	/* border-radius: 100%; */
+	border-radius: var(--global-borderRadius);
 	view-transition-name: back;
 	background-color: var(--global-backgroundColor);
 	padding: var(--global-space-xs);
